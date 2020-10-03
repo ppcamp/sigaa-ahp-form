@@ -29,7 +29,7 @@ let app = express();
 // support parsing of application/json type post data
 app.use(bodyParser.json());
 // Suport cors
-app.use(cors());
+app.use(cors({ origin: 'http://ec2-34-204-81-199.compute-1.amazonaws.com:3000/' }));
 
 
 // Routes
