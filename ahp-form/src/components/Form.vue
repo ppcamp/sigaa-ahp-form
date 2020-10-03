@@ -246,7 +246,7 @@ export default {
       validForm: true,
       validAhp: true,
       loading: false,
-      sent: true,
+      sent: false,
     };
   },
   created() {
@@ -327,6 +327,10 @@ export default {
     },
     submit() {
       const { username, email } = this.user;
+      // Check if fields where filled
+      this.$refs.form.validate();
+      if (!username || !email) return; // Not submit
+
       const result = this.checkAhp();
       if (!result) this.validForm = this.validAhp = false;
       else {
@@ -345,7 +349,7 @@ export default {
         };
         console.log("submit -> data", data);
         this.loading = true;
-        axios.post("localhost:3000", data).then(() => {
+        axios.post("http://localhost:3000", data).then(() => {
           this.loading = false;
           this.sent = true;
         });
