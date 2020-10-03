@@ -11,7 +11,16 @@ const { StatusCodes } = http;
 
 // Configure env
 dotenv.config()
-
+// Configure email
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
 
 // App
 let app = express();
@@ -24,7 +33,11 @@ app.use(cors());
 
 
 // Routes
-app.post('', (req, res) => {
+app.get('/', (req, res) => {
+  res.status(StatusCodes.OK).send('<h1 style="text-align:center;color:green;margin:10em">Api online</h1>');
+});
+
+app.post('/', (req, res) => {
   const body = req.body;
   // Check if keys exists (Deny, otherwise)
   for (i of ['Nome', 'Email', 'Matriz']) {
@@ -35,16 +48,6 @@ app.post('', (req, res) => {
       return; // Force to end this requisition in server (not send)
     }
   }
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-  });
 
   const mailOptions = {
     from: 'Sigaa Form <sigaaForm@noreplay.com>', // sender address
@@ -72,4 +75,6 @@ app.post('', (req, res) => {
 process.env.PORT = 3000;
 app.listen(process.env.PORT, () => {
   logger.info(`Api listening in http://localhost:${process.env.PORT}`);
+  logger.info(`User: ${process.env.EMAIL_USER}`);
+  logger.info(`Password: ${process.env.EMAIL_PASSWORD}`);
 });
