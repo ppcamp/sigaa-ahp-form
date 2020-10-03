@@ -75,6 +75,6 @@ app.post('/', (req, res) => {
 process.env.PORT = 3000;
 app.listen(process.env.PORT, () => {
   logger.info(`Api listening in http://localhost:${process.env.PORT}`);
-  logger.info(`User: ${process.env.EMAIL_USER}`);
-  logger.info(`Password: ${process.env.EMAIL_PASSWORD}`);
+  // logger.info(`User: ${process.env.EMAIL_USER}`);
+  // logger.info(`Password: ${process.env.EMAIL_PASSWORD}`);
 });
