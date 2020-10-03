@@ -1,180 +1,199 @@
 <template>
-  <div class="form">
-    <v-form v-model="validForm" ref="form">
-      <v-container class="pt-5">
-        <v-divider></v-divider>
-        <p class="text-center display-1 my-5" id="conhecimentotec">
-          Conhecimento técnico
-        </p>
+  <v-form v-model="validForm" ref="form">
+    <v-container class="pt-5">
+      <v-divider></v-divider>
 
-        <div v-for="(a, iA) in questions" :key="a">
-          <v-row v-for="(b, iB) in questions.slice(iA)" :key="b" min-height="">
-            <v-tooltip top color="indigo darken-2">
-              <template v-slot:activator="{ on, attrs }">
-                <v-row v-if="a != b" class="px-5" v-on="on" v-bind="attrs">
-                  <v-col cols="5"
-                    ><span class="font-weight-bold"> {{ a }} </span></v-col
-                  >
-                  <v-col cols="2" class="text-center"
-                    ><span class="font-weight-bold"> vs </span></v-col
-                  >
-                  <v-col cols="5" class="text-right"
-                    ><span class="font-weight-bold">
-                      {{ b }}
-                    </span></v-col
-                  >
-                </v-row>
-              </template>
-              <h4>
-                O quão [<i
-                  ><b>{{ a }}</b></i
-                >] é mais "importante" com relação à [<i
-                  ><b>{{ b }}</b></i
-                >]
-              </h4>
-            </v-tooltip>
+      <!-- Title -->
+      <p class="text-center display-1 my-5">Conhecimento técnico</p>
 
-            <v-card-text v-if="a != b">
-              <v-slider
-                persistent-hint
-                step="2"
-                thumb-label
-                ticks="always"
-                tick-size="1"
-                :min="ahp.min"
-                :max="ahp.max"
-                :tick-labels="ahp.ticks"
-                class="pb-5 mb-5 grey--text text-subtitle-1"
-                color="indigo lighten-1"
-                track-color="indigo lighten-1"
-                dense
-                v-model="matrix[iA][iB + iA]"
-                @change="iMatrixValue(iA, iB + iA)"
-              >
-              </v-slider>
-              <v-divider></v-divider>
-            </v-card-text>
-          </v-row>
-        </div>
-
-        <v-divider dark></v-divider>
-        <v-row>
-          <span class="pa-5 display-1 my-5">Confirmar e enviar</span>
-        </v-row>
-        <v-row>
-          <v-col cols="6">
-            <v-text-field
-              v-model="user.username"
-              :rules="rules.empty"
-              :counter="200"
-              label="Nome"
-              clearable
-              required
-            ></v-text-field>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="6">
-            <v-text-field
-              v-model="user.email"
-              :rules="rules.email"
-              label="E-mail"
-              clearable
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
-        <v-row justify="center">
-          <v-checkbox v-model="acceptTerms" color="green" value="acceptTerms">
-            <template v-slot:label>
-              <div>
-                Ao clicar, você concorda em ceder suas informações, de acordo
-                com o
-                <v-dialog width="600px">
-                  <template v-slot:activator="{ on, attrs }">
-                    <span
-                      title="Clique para visualizar os termos"
-                      class="primary--text"
-                      v-bind="attrs"
-                      v-on="on"
-                    >
-                      contrato
-                    </span>
-                  </template>
-                  <v-card>
-                    <v-card-title>
-                      <span class="headline"> concessão de dados </span>
-                    </v-card-title>
-                    <v-card-text>
-                      Concordo em disponibilizar os dados.
-                    </v-card-text>
-                  </v-card>
-                </v-dialog>
-                .
-              </div>
+      <div v-for="(a, iA) in questions" :key="a">
+        <v-row v-for="(b, iB) in questions.slice(iA)" :key="b" min-height="">
+          <!-- Questions -->
+          <v-tooltip top color="indigo darken-2">
+            <template v-slot:activator="{ on, attrs }">
+              <v-row v-if="a != b" class="px-5" v-on="on" v-bind="attrs">
+                <v-col cols="5"
+                  ><span class="font-weight-bold"> {{ a }} </span></v-col
+                >
+                <v-col cols="2" class="text-center"
+                  ><span class="font-weight-bold"> vs </span></v-col
+                >
+                <v-col cols="5" class="text-right"
+                  ><span class="font-weight-bold">
+                    {{ b }}
+                  </span></v-col
+                >
+              </v-row>
             </template>
-          </v-checkbox>
+            <h4>
+              O quão [<i
+                ><b>{{ a }}</b></i
+              >] é mais "importante" com relação à [<i
+                ><b>{{ b }}</b></i
+              >]
+            </h4>
+          </v-tooltip>
+
+          <!-- Sliders -->
+          <v-card-text v-if="a != b">
+            <v-slider
+              persistent-hint
+              step="2"
+              thumb-label
+              ticks="always"
+              tick-size="1"
+              :min="ahp.min"
+              :max="ahp.max"
+              :tick-labels="ahp.ticks"
+              class="pb-5 mb-5 grey--text text-subtitle-1"
+              color="indigo lighten-1"
+              track-color="indigo lighten-1"
+              dense
+              v-model="matrix[iA][iB + iA]"
+              @change="iMatrixValue(iA, iB + iA)"
+            >
+            </v-slider>
+            <v-divider></v-divider>
+          </v-card-text>
         </v-row>
-        <v-row justify="center">
-          <v-alert
-            prominent
-            type="error"
-            :value="!validAhp"
-            border="top"
-            transition="scale-transition"
-          >
-            <v-row align="center">
-              <v-col class="grow">
-                Infelizmente, ao fazer a checagem, suas respostas foram
-                incoerentes, por favor, resete o formulário e tente novamente
-                😞.
-              </v-col>
-              <v-col class="shrink">
-                <v-btn @click="reset">Resetar</v-btn>
-              </v-col>
-            </v-row>
-          </v-alert>
-        </v-row>
-        <v-row justify="center" class="mb-5 pb-5">
-          <v-btn class="success" :disabled="!acceptTerms" @click="submit">
-            Enviar
-          </v-btn>
-        </v-row>
-      </v-container>
-    </v-form>
-  </div>
+      </div>
+
+      <!-- Confirmation and send -->
+      <v-divider dark></v-divider>
+      <v-row>
+        <span class="pa-5 display-1 my-5">Confirmar e enviar</span>
+      </v-row>
+      <v-row>
+        <v-col cols="6">
+          <v-text-field
+            v-model="user.username"
+            :rules="rules.empty"
+            :counter="200"
+            label="Nome"
+            clearable
+            required
+          ></v-text-field>
+        </v-col>
+        <v-spacer></v-spacer>
+        <v-col cols="6">
+          <v-text-field
+            v-model="user.email"
+            :rules="rules.email"
+            label="E-mail"
+            clearable
+            required
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row justify="center">
+        <v-checkbox v-model="acceptTerms" color="green" value="acceptTerms">
+          <template v-slot:label>
+            <div>
+              Ao clicar, você concorda em ceder suas informações, de acordo com
+              o
+              <v-dialog width="600px">
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    title="Clique para visualizar os termos"
+                    class="primary--text"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    contrato
+                  </span>
+                </template>
+                <v-card>
+                  <v-card-title>
+                    <span class="headline"> concessão de dados </span>
+                  </v-card-title>
+                  <v-card-text>
+                    Concordo em disponibilizar os dados.
+                  </v-card-text>
+                </v-card>
+              </v-dialog>
+              .
+            </div>
+          </template>
+        </v-checkbox>
+      </v-row>
+      <!-- inconsistent responses -->
+      <v-row justify="center">
+        <v-alert
+          prominent
+          type="error"
+          :value="!validAhp"
+          border="top"
+          transition="scale-transition"
+        >
+          <v-row align="center">
+            <v-col class="grow">
+              Infelizmente, ao fazer a checagem, suas respostas foram
+              incoerentes, por favor, resete o formulário e tente novamente 😞.
+            </v-col>
+            <v-col class="shrink">
+              <v-btn @click="reset">Resetar</v-btn>
+            </v-col>
+          </v-row>
+        </v-alert>
+      </v-row>
+      <!-- Send btn -->
+      <v-row justify="center" class="mb-5 pb-5">
+        <v-btn class="success" :disabled="!acceptTerms" @click="submit">
+          Enviar
+        </v-btn>
+      </v-row>
+    </v-container>
+
+    <!-- Loading (Sending informations) -->
+    <v-dialog v-model="loading" persistent width="35em">
+      <v-card class="pa-5 text-center">
+        <v-progress-circular
+          :size="50"
+          color="primary"
+          class="mr-5"
+          indeterminate
+        ></v-progress-circular>
+        <span class="overline"
+          >Enviando as informações para os pesquisadores</span
+        >
+      </v-card>
+    </v-dialog>
+
+    <!-- Error when send -->
+    <!-- toDo:
+    <v-dialog v-model="errorOnSend" persistent width="35em">
+      <v-card class="pa-5 text-center">
+        <v
+        <span class="overline"
+          >Enviando as informações para os pesquisadores</span
+        >
+      </v-card>
+    </v-dialog>
+    -->
+
+    <!-- Confirmation when send -->
+    <div class="text-center">
+      <v-bottom-sheet v-model="sent" persistent>
+        <v-sheet class="text-center" height="10em">
+          <v-btn class="ma-4" text color="error" @click="reset"> Fechar </v-btn>
+          <h3 class="pa-2">
+            <v-icon size="2em" class="pr-5" color="green">
+              mdi-email-check-outline
+            </v-icon>
+            Informações enviadas com sucesso para os pesquisadores!
+          </h3>
+        </v-sheet>
+      </v-bottom-sheet>
+    </div>
+  </v-form>
 </template>
 
 <script>
-const nodemailer = require("nodemailer");
+import axios from "axios";
 
 export default {
   data() {
     return {
-      ahp: {
-        ticks: [
-          "Igual",
-          "Moderada",
-          "Mais importante",
-          "Muito mais",
-          "Extremamente mais",
-        ],
-        min: 1,
-        max: 9,
-        step: 2,
-      },
-      rules: {
-        email: [
-          (v) =>
-            /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(
-              v
-            ) || "E-mail inválido",
-        ],
-        empty: [
-          (v) =>
-            v.length >= 5 || "Não alcançou o tamanho mínimo de caracteres.",
-        ],
-      },
-      user: { username: "", email: "" },
       // O número de perguntas é dado pela fórmula de combinação: n!/( p!(n-p)! )
       // onde n é a qnt do vetor e p são as perguntas (em pares => 2)
       questions: [
@@ -195,10 +214,39 @@ export default {
         // "Protocolos de comunicação em hardware",
         // "Conhecimentos básicos em sistemas de automação",
       ],
+      // Relativo ao AHP
       matrix: undefined,
+      ahp: {
+        ticks: [
+          "Igual",
+          "Moderada",
+          "Mais importante",
+          "Muito mais",
+          "Extremamente mais",
+        ],
+        min: 1,
+        max: 9,
+        step: 2,
+      },
+      // Relativos ao questionário
+      rules: {
+        email: [
+          (v) =>
+            /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(
+              v
+            ) || "E-mail inválido",
+        ],
+        empty: [
+          (v) =>
+            v.length >= 5 || "Não alcançou o tamanho mínimo de caracteres.",
+        ],
+      },
+      user: { username: "", email: "" },
       acceptTerms: false,
       validForm: true,
       validAhp: true,
+      loading: false,
+      sent: true,
     };
   },
   created() {
@@ -273,9 +321,9 @@ export default {
       // Reset matrix
       this.matrix.map((arrayRow) => arrayRow.fill(1));
       this.validAhp = true;
-      this.$refs.form.resetValidation();
       this.user.email = this.user.username = "";
-      // this.$refs.form.reset();
+      this.sent = false;
+      this.$refs.form.resetValidation();
     },
     submit() {
       const { username, email } = this.user;
@@ -291,30 +339,15 @@ export default {
         const data = {
           Nome: username,
           Email: email,
-          Matriz: this.matrix,
+          Matriz: String(
+            this.matrix.map((curr) => "[" + curr.join() + "],").join("")
+          ),
         };
         console.log("submit -> data", data);
-
-        const transporter = nodemailer.createTransport({
-          host: "smtp.gmail.com",
-          port: 465,
-          secure: true,
-          auth: {
-            user: process.env.USER,
-            pass: process.env.PSSWD,
-          },
-        });
-
-        const mailOptions = {
-          from: "sigaaForm@noreplay.com",
-          to: "p.augustocampos@gmail.com",
-          subject: "[Formulário Sigaa] Compentências",
-          text: data,
-        };
-
-        transporter.sendMail(mailOptions, function(error) {
-          if (error) console.log("Error");
-          else console.log("Email send");
+        this.loading = true;
+        axios.post("localhost:3000", data).then(() => {
+          this.loading = false;
+          this.sent = true;
         });
       }
     },
