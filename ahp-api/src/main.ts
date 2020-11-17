@@ -21,7 +21,7 @@ async function bootstrap() {
   // Main page of api reference
   SwaggerModule.setup('api', app, document);
 
-  // Test
+  // Test amazon deploy
 
   // Allowed requisition
   app.enableCors();
