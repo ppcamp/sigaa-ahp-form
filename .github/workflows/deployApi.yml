@@ -19,5 +19,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: cd ahp-api && npm i
     - run: cd ahp-api && npm run build
-    - run: cd ahp-api && cp /home/.env .
+    - run: cd ahp-api && cp /home/ubuntu/.env .
     # - run: cd ahp-api && pm2 restart ApiBackend
