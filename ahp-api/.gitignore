@@ -1,20 +1,34 @@
+# compiled output
+/dist
+/node_modules
+
 # Logs
-logs/
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+# OS
+.DS_Store
 
-# Dependency directories
-node_modules/
+# Tests
+/coverage
+/.nyc_output
 
-# Optional npm cache directory
-.npm
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# dotenv environment variables file
-.env
-.env.test
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
