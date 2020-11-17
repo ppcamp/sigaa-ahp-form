@@ -21,6 +21,8 @@ async function bootstrap() {
   // Main page of api reference
   SwaggerModule.setup('api', app, document);
 
+  // Test
+
   // Allowed requisition
   app.enableCors();
 
