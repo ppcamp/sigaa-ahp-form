@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* Common configs */
+    body {
+      counter-reset: div;
+      margin: 0em 2em;
+      padding: 2em 5em;
+      font-size: large;
+      font-style: normal;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    /* Div configs */
+    body>div {
+      text-indent: 0.8em;
+      display: block;
+      padding: 1em 0em;
+      font-style: italic;
+    }
+
+    /* Alternate between line colors */
+    body>div:nth-child(2n+1) {
+      background: rgb(224, 224, 224);
+    }
+
+    body>div:nth-child(2n+2) {
+      background: rgb(245, 245, 245);
+    }
+
+
+    /* Numbering */
+    .wrapper {
+      counter-reset: my-awesome-counter;
+    }
+
+    div {
+      counter-increment: my-awesome-counter;
+    }
+
+    div:before {
+      content: counter(my-awesome-counter) ".";
+      margin-right: 7px;
+    }
+  </style>
+</head>
+
+<body class="wrapper">
+  <h1>Logs</h1>
+  <h5>Data: {{date}}</h5>
+  <hr />
+  {{#each rows}}
+  <div>
+    <span>
+      {{this}}
+    </span>
+  </div>
+  {{/each}}
+</body>
+
+</html>

@@ -490,8 +490,8 @@
         </v-alert>
       </v-row>
     </v-container>
-    <!--------------------------------------------------------------------->
 
+    <!---------------------- End of Questions ----------------------->
     <!-- Confirmation and send -->
     <v-container>
       <v-divider dark></v-divider>
@@ -597,16 +597,30 @@
     </v-dialog>
 
     <!-- UI: Error when send -->
-    <!-- toDo:
     <v-dialog v-model="errorOnSend" persistent width="35em">
       <v-card class="pa-5 text-center">
-        <v
-        <span class="overline"
-          >Enviando as informações para os pesquisadores</span
-        >
+        <h3 class="pa-2">
+          <v-btn class="px-0" text color="error" @click="reset"> Fechar </v-btn>
+          <br />
+          <br />
+          <v-icon size="2em" class="pr-5" color="red">
+            mdi-alert-decagram
+          </v-icon>
+          Houve um erro ao enviar as informações
+          <br />
+          <br />
+          <p align="justify" class="caption text--darken-2 grey--text">
+            * Por favor entre em contato com os pesquisadores para avisá-los
+            sobre este problema.
+            <strong>
+              <span class="error--text">
+                Erro: {{ this.errorOnSendCode }}
+              </span>
+            </strong>
+          </p>
+        </h3>
       </v-card>
     </v-dialog>
-    -->
 
     <!-- UI: Confirmation when send -->
     <div class="text-center">
@@ -811,6 +825,8 @@ export default {
 
       // UI interations (allerts)
       loading: false, // Sending info to email
+      errorOnSend: false, // Ocurred a problem when sending info to email
+      errorOnSendCode: null, // code that will get the status of requisition
       sent: false, // Email sent
     };
   },
@@ -886,8 +902,8 @@ export default {
       .fill()
       .map(() => Array(size).fill(1));
 
-    console.log("created -> this.lRoot.matrix", this.lRoot.matrix);
-    console.log("created -> this.lRoot.formMatrix", this.lRoot.formMatrix);
+    // console.log("created -> this.lRoot.matrix", this.lRoot.matrix);
+    // console.log("created -> this.lRoot.formMatrix", this.lRoot.formMatrix);
   },
 
   // Functions
@@ -916,9 +932,9 @@ export default {
       obj.matrix[row][col] = this.ahp.values[value];
       obj.matrix[col][row] = this.round(this.ahp.values[value] ** -1);
 
-      console.log("insertIntoMatrix -> value", value);
-      console.log("insertIntoMatrix -> Matrix", this.lRoot.matrix);
-      console.log("insertIntoMatrix -> Form", this.lRoot.formMatrix);
+      // console.log("insertIntoMatrix -> value", value);
+      // console.log("insertIntoMatrix -> Matrix", this.lRoot.matrix);
+      // console.log("insertIntoMatrix -> Form", this.lRoot.formMatrix);
 
       // Check ahp
       obj.valid = true;
@@ -942,8 +958,8 @@ export default {
       if (!matrix) matrix = obj.map((rowArray) => rowArray.slice());
       let _m = obj.map((rowArray) => rowArray.slice());
 
-      console.log("checkAhp -> matrix", matrix);
-      console.log("checkAhp -> _m", _m);
+      // console.log("checkAhp -> matrix", matrix);
+      // console.log("checkAhp -> _m", _m);
 
       // Inconsistency index
       const RI = [
@@ -998,9 +1014,9 @@ export default {
         (len - 1);
 
       const CR = CI / RI[len - 1];
-      console.log("checkAhp -> CI", CI);
+      // console.log("checkAhp -> CI", CI);
       // Where 0.1 it's given by Saaty also
-      console.log("checkAhp -> CR", CR);
+      // console.log("checkAhp -> CR", CR);
       return CR < 0.1;
     },
 
@@ -1028,18 +1044,18 @@ export default {
       // didn't changed the ahp matrix by default, so now, assuming that
       // everything is ok, we do.
       this.checkAhp(this.lRoot.matrix, this.lRoot.matrix);
-      console.log("submit -> this.lRoot.matrix", this.lRoot.matrix);
+      // console.log("submit -> this.lRoot.matrix", this.lRoot.matrix);
       this.checkAhp(this.l1Q1.matrix, this.l1Q1.matrix);
-      console.log("submit -> this.l1Q1.matrix", this.l1Q1.matrix);
+      // console.log("submit -> this.l1Q1.matrix", this.l1Q1.matrix);
       this.checkAhp(this.l2Q1S2.matrix, this.l2Q1S2.matrix);
-      console.log("submit -> this.l2Q1S2.matrix", this.l2Q1S2.matrix);
+      // console.log("submit -> this.l2Q1S2.matrix", this.l2Q1S2.matrix);
       this.checkAhp(this.l2Q1S3.matrix, this.l2Q1S3.matrix);
-      console.log("submit -> this.l2Q1S3.matrix", this.l2Q1S3.matrix);
+      // console.log("submit -> this.l2Q1S3.matrix", this.l2Q1S3.matrix);
       // this.checkAhp(this.l2Q1S5, this.l2Q1S5.matrix); // We do not validate it
       this.checkAhp(this.l1Q2.matrix, this.l1Q2.matrix);
-      console.log("submit -> this.l1Q2.matrix", this.l1Q2.matrix);
+      // console.log("submit -> this.l1Q2.matrix", this.l1Q2.matrix);
       this.checkAhp(this.l1Q3.matrix, this.l1Q3.matrix);
-      console.log("submit -> this.l1Q3.matrix", this.l1Q3.matrix);
+      // console.log("submit -> this.l1Q3.matrix", this.l1Q3.matrix);
 
       // Send email
       const data = {
@@ -1065,17 +1081,28 @@ export default {
           this.l1Q3.matrix.map((curr) => "[" + curr.join() + "],").join("")
         ),
       };
-      console.log("submit -> Send email");
-      console.log("submit -> email", email);
-      console.log("submit -> username", username);
-      console.log("submit -> data", data);
+      // console.log("submit -> Send email");
+      // console.log("submit -> email", email);
+      // console.log("submit -> username", username);
+      // console.log("submit -> data", data);
 
       // Start UI loading animation
       this.loading = true;
-      axios.post("http://3.93.145.235:3000/email", data).then(() => {
-        this.loading = false; // close ui anim
-        this.sent = true; // opens ui sent msg
-      });
+      axios
+        .post(`http://${process.env.VUE_APP_PUBLIC_URL}:3000/email`, data)
+        .then(
+          () => {
+            this.loading = false; // close ui anim
+            this.sent = true; // opens ui sent msg
+          },
+          (err) => {
+            this.loading = false; // close ui anim
+            this.errorOnSend = true; // open error message
+            this.errorOnSendCode = err.response.status;
+            // console.log("submit -> err.response.status", err.response.status);
+            // console.log("submit -> axios err", err);
+          }
+        );
     },
   },
 };

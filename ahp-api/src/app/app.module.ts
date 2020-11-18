@@ -3,7 +3,6 @@ import { WinstonModule } from 'nest-winston';
 import { EmailModule } from '../modules/email/email.module';
 import * as winston from 'winston';
 import { ConfigModule } from '@nestjs/config';
-import { INQUIRER } from '@nestjs/core';
 
 @Module({
   imports: [

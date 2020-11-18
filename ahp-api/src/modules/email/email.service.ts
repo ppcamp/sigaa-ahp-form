@@ -73,7 +73,29 @@ export class EmailService {
    */
   async getInfos(ip: string): Promise<string> {
     this.logger.info(`${this.name} GetInfos -> Req Ip ${ip}`);
-    return '<h1 style="text-align:center;color:green;margin:10em">Api online</h1>';
+    // Create a handlebars to this section
+    var source = fs.readFileSync(
+      path.join(this.hbsViews, 'logs.handlebars'),
+      'utf8',
+    );
+    const template = Handlebars.compile(source);
+    // -------------------------------
+    // ToDo get name of last file
+    // const p = path.join(__dirname, '..', '..', 'logs', 'log.log');
+    // console.log('EmailService -> p', p);
+    // try {
+    //   const rows = fs.readFileSync(p, { encoding: 'utf8', flag: 'r' });
+    //   console.log('EmailService -> rows', rows);
+    // } catch (err) {
+    //   console.log('EmailService -> err', err);
+    // }
+    // --------------------------------
+    const rows = [
+      "File currently not working due the problem to open the log file while it's still being used by winston",
+    ];
+    const pageToSend = template({ rows: rows, date: `${Date().toString()}` });
+    // '<h1 style="text-align:center;color:green;margin:10em">Api online</h1>'
+    return pageToSend;
   }
 
   /**
@@ -88,12 +110,6 @@ export class EmailService {
       path.join(this.hbsViews, 'form.handlebars'),
       'utf8',
     );
-
-    Handlebars.registerHelper('split', function(matrix) {
-      var t = matrix.split(',');
-      return t;
-    });
-
     const template = Handlebars.compile(source);
 
     // Create a default object and pass values to it
