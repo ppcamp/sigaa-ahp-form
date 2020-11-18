@@ -9,9 +9,6 @@ lerna-debug.log*
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-# Build folder
-dist/
-
 # Dependency directories
 node_modules/
 

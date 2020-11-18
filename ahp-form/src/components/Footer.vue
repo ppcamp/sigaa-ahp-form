@@ -47,12 +47,6 @@
           </p>
         </v-col>
       </v-row>
-      <v-col align="center">
-        <p class="caption text--lighten-2 grey--text">
-          * Em caso de problemas/dúvidas, sinta-se a vontade para entrar em
-          contato com os pesquisadores através do email.
-        </p>
-      </v-col>
       <v-divider></v-divider>
       <v-row>
         <v-card-text class="white--text" align="center">
