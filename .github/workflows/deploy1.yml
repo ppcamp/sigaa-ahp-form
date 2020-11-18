@@ -1,4 +1,4 @@
-name: FrontVue CI
+name: Deploy1 FrontVue CI
 
 on:
   push:

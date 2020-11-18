@@ -1,4 +1,4 @@
-name: Deploy Api App
+name: Deploy2 Api App
 
 on:
   push:
