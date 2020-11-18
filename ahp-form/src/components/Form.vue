@@ -1072,7 +1072,7 @@ export default {
 
       // Start UI loading animation
       this.loading = true;
-      axios.post("http://localhost:3000/email", data).then(() => {
+      axios.post("http://3.93.145.235:3000/email", data).then(() => {
         this.loading = false; // close ui anim
         this.sent = true; // opens ui sent msg
       });
