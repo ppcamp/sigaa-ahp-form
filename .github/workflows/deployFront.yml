@@ -2,7 +2,7 @@ name: FrontVue CI
 
 on:
   push:
-    branches: [ frontend ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -21,4 +21,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: cd ahp-form && npm i
     - run: cd ahp-form && npm run build
-    - run: cd ahp-form && cp dist/ /var/www/html/.
+    - run: cd ahp-form && cp -r dist/* /var/www/html/

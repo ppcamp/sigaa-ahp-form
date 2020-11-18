@@ -2,7 +2,7 @@ name: Deploy Api App
 
 on:
   push:
-    branches: [backend]
+    branches: [main]
 
 
 jobs:
