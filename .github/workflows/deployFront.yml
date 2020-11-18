@@ -21,4 +21,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: cd ahp-form && npm i
     - run: cd ahp-form && npm run build
-    - run: cp -f dist/ /var/www/html/.
+    - run: cd ahp-form && cp dist/ /var/www/html/.
