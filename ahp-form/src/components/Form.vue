@@ -788,20 +788,12 @@ export default {
       // Sliders
       ahp: {
         // Values that will be inserted into matrix
-        values: [0.11, 0.14, 0.2, 1, 5, 7, 9],
+        values: [0.11, 0.14, 0.2, 0.33, 1, 3, 5, 7, 9],
         // Questions labels
-        ticks: [
-          "Extremamente menos",
-          "Muito menos",
-          "Menos",
-          "Igual",
-          "Mais",
-          "Muito mais",
-          "Extremamente mais",
-        ],
+        ticks: ["9", "7", "5", "3", "Igual", "3", "5", "7", "9"],
         // Range (iterate over values and ticks)
         min: 0,
-        max: 6,
+        max: 8,
       },
 
       // Send form
@@ -836,7 +828,7 @@ export default {
     // This variable will get the matrix dimensions
     let size = 0;
     // This variable will store the value of position in form
-    const pos = 3;
+    const pos = 4;
 
     // Initialize matrix for "Default questions (Root)"
     size = this.lRoot.questions.length;
