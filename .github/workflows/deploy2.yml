@@ -17,8 +17,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd ahp-api && npm i
-    - run: echo `pwd`
-    - run: cd ahp-api && npm run build
-    - run: cd ahp-api && cp /home/ubuntu/configEnvs/back/.env .
+    - run: cd ahp-api ; echo `pwd`; cp /home/ubuntu/configEnvs/back/.env .
+    - run: cd ahp-api ; echo `pwd`; npm i; npm run build
     - run: cd ahp-api && pm2 restart ApiBackend
