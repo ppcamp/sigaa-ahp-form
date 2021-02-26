@@ -40,6 +40,9 @@ async function bootstrap() {
   // Start to listen
   await app.listen(port, host);
 
+  console.log(`Running in: ${host}:${port} `);
+  console.log(`API in: ${host}:${port}/api `);
+
   const url = await app.getUrl();
 }
 bootstrap();
