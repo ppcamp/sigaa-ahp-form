@@ -6,7 +6,7 @@
           icon
           class="mx-4 white--text"
           title="Enviar email para o pesquisador"
-          href="mailto:p.augustocampos@gmail.com?subject=Formulario"
+          href="mailto:rodrigobraga@unifei.edu.br?subject=Formulário"
         >
           <v-icon size="24px" alt="Ícone de email"> mdi-gmail </v-icon>
         </v-btn>

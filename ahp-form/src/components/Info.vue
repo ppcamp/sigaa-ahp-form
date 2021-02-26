@@ -36,7 +36,7 @@
         <p class="text-justify" style="text-indent: 2em">
           Ao final do questionário, será possível entender melhor o que os
           professores e o mercado esperam do aluno egresso, de maneira que seja
-          possível o uso da ferramenta pelo MEC para mensurar, de maneira
+          possível o uso da ferramenta para mensurar, de maneira
           quantitativa, as diretivas propostas para o curso, assim como,
           elaborar uma grade curricular que esteja mais próximo do esperado pelo
           mercado.
@@ -57,9 +57,9 @@
         </p>
         <p class="text-justify" style="text-indent: 2em">
           <v-icon>mdi-alert-circle-outline</v-icon>
-          Nota<sup>3</sup>: O formulário irá validar as suas respostas a cada
-          seção. Certifique-se de preencher de maneira mais coerente possível
-          para evitar possíveis frustrações.
+          Nota<sup>3</sup>: <strong>O formulário irá validar as suas respostas a cada
+          seção</strong>. Certifique-se de preencher de maneira mais coerente possível,
+          isso ajudará no processo de análise dos resultados"
         </p>
         <p class="text-right font-weight-bold blue-grey--text">
           Tempo estimado: 10min.
