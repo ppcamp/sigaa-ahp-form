@@ -14,6 +14,9 @@ pm2 logs ApiBackend --lines 100
 
 # to restart
 pm2 restart ApiBackend
+
+# to create a new api
+pm2 main.js --name ApiBackend
 ```
 
 The api use an action defined in github, which auto update the api code when detect some change
