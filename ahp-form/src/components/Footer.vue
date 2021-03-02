@@ -38,11 +38,11 @@
           <p class="caption">
             Pedro Augusto Campos Dos Santos (Aluno)
             <br />
-            Giovanni Bernardes (Professor Orientador)
+            Giovani Bernardes (Professor Orientador)
             <br />
-            Ana ... (Professora Co-orientadora)
+            Ana Carolina Oliveira Santos (Professora Co-orientadora)
             <br />
-            Rodrigo Braga ... (Professor Co-orientador)
+            Rodrigo Aparecido da Silva Braga (Professor Co-orientador)
             <br />
           </p>
         </v-col>

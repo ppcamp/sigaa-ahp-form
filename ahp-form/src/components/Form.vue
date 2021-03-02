@@ -4,7 +4,7 @@
     <v-container class="py-5 my-5 px-5">
       <v-divider></v-divider>
       <!-- Title -->
-      <p class="text-center display-2 my-5 pb-4" id="general">Visão geral</p>
+      <p class="text-center display-2 my-5 pb-4" id="sec1">Visão geral</p>
 
       <!-- Questions -->
       <div v-for="(a, iA) in lRoot.questions" :key="a">
@@ -72,7 +72,7 @@
     <!-- 1. Conhecimento técnico -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-2 my-5 pb-4" id="habtec">
+      <p class="text-center display-2 my-5 pb-4" id="sec2">
         Conhecimento técnico
       </p>
 
@@ -142,7 +142,7 @@
     <!-- 1.2. Conhecimento, métodos e ferramentas fundamentais de computação básica -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-1 my-5 pb-4" id="habtec">
+      <p class="text-center display-1 my-5 pb-4" id="sec3">
         Conhecimento, métodos e ferramentas fundamentais de computação básica
       </p>
 
@@ -209,10 +209,10 @@
       </v-row>
     </v-container>
 
-    <!-- 1.3. Conhecimento, métodos e ferramentas fundamentais de computação básica -->
+    <!-- 1.3. Conhecimento, métodos e ferramentas na área de sistemas de software -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-1 my-3 pb-4" id="habtec">
+      <p class="text-center display-1 my-3 pb-4" id="sec4">
         Conhecimento, métodos e ferramentas na área de sistemas de software
       </p>
 
@@ -282,7 +282,7 @@
     <!-- 1.5. Conhecimentos básicos em sistemas de comunicação -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-1 my-3 pb-4" id="habtec">
+      <p class="text-center display-1 my-3 pb-4" id="sec5">
         Conhecimentos básicos em sistemas de comunicação
       </p>
 
@@ -353,7 +353,7 @@
     <!-- 2. Competências, habilidades e atributos pessoais e profissionais -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-3 my-3 pb-4" id="habtec">
+      <p class="text-center display-3 my-3 pb-4" id="sec6">
         Competências, habilidades e atributos pessoais e profissionais
       </p>
 
@@ -423,7 +423,7 @@
     <!-- 3. Competências e habilidades interpessoais: trabalho em equipe e comunicação -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-2 my-3 pb-4" id="habtec">
+      <p class="text-center display-2 my-3 pb-4" id="sec7">
         Competências e habilidades interpessoais: trabalho em equipe e
         comunicação
       </p>
@@ -497,7 +497,7 @@
       <v-divider dark></v-divider>
       <!-- Text -->
       <v-row>
-        <span class="pa-5 display-1 my-5">Confirmar e enviar</span>
+        <span id="confirmation" class="pa-5 display-1 my-5">Confirmar e enviar</span>
       </v-row>
 
       <!-- Input fields -->
@@ -564,11 +564,13 @@
                       é perfeitamente seguro e utilizado tanto no meio acadêmico como por empresas.
                       As informações coletadas serão utilizadas unicamente para fins acadêmicos
                     </p>
+                    <!--
                     <p class="text-justify" style="text-indent: 2em">
                       Salienta-se que a pesquisa foi aprovada pelo Comitê de Ética em Pesquisa
                       <span class="red--text"> XXX </span>,
                         sob protocolo <span class="red--text">YYY</span>.
                     </p>
+                    -->
                     <p class="text-justify" style="text-indent: 2em">
                       Quanto aos possíveis riscos ou danos à sua participação, esses são considerados mínimos e
                       relacionados ao preenchimento de questionários, tais como: tomar o tempo do respondente,

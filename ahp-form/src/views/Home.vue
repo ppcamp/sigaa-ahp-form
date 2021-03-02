@@ -1,6 +1,8 @@
 <template>
   <v-app>
     <!-- Add more informations -->
+    <h1 align="center">Formulário de pesquisa acadêmica</h1>
+
     <Info />
 
     <!-- Add a navbar to iterate over "Form" -->

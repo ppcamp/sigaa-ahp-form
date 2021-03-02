@@ -6,11 +6,8 @@
         <p class="text-justify" style="text-indent: 2em">
           O objetivo deste questionário é realizar uma pesquisa com
           profissionais da área da informática, sendo esses, responsáveis por
-          realizar a contratação da equipe de TI.
-        </p>
-        <p class="text-justify" style="text-indent: 2em">
-          Além disso, ele também será usado para realizar uma pesquisa com
-          docentes da área,
+          realizar a contratação da equipe de TI. Adicionalmente, este questionário
+          também será utilizado para realizar a pesquisa com docentes da área.
         </p>
       </v-card-text>
 
@@ -20,10 +17,9 @@
           O questionário utiliza o AHP -- <i>Analythic Hierarchy Process</i>,
           sendo esta, uma técnica desenvolvida por Saaty(1980) para tomada de
           decisões. A técnica pode ser utilizada para
-          <b>validar as informações</b> obtidas no questionário, i.e., se o que
-          foi selecionado está coerente, dessa forma, caso esteja muito
-          incoerente, será requisitado que preencha
-          <b> todo o questionário novamente</b>.
+          <b>validar as informações</b> obtidas no questionário, i.e, se as respostas
+          selecionadas estão coerentes ou não.
+          Caso esteja muito incoerente, será requisitado um novo preenchimento para a seção.
         </p>
         <p class="text-justify" style="text-indent: 2em">
           Ao concluir, será pedido um email para contato e, por fim, as
@@ -37,18 +33,16 @@
           Ao final do questionário, será possível entender melhor o que os
           professores e o mercado esperam do aluno egresso, de maneira que seja
           possível o uso da ferramenta para mensurar, de maneira
-          quantitativa, as diretivas propostas para o curso, assim como,
-          elaborar uma grade curricular que esteja mais próximo do esperado pelo
-          mercado.
+          quantitativa, as diretivas propostas para o curso.
         </p>
       </v-card-text>
 
       <v-card-title> Notas: </v-card-title>
       <v-card-text>
         <p class="text-justify" style="text-indent: 2em">
-          <v-icon>mdi-alert-circle-outline</v-icon> Nota: os dados informados
+          <v-icon>mdi-alert-circle-outline</v-icon> Nota: Os dados informados
           aqui serão enviados aos responsáveis pela pesquisa, toda e qualquer
-          informação será sigilosa
+          informação será sigilosa.
         </p>
         <p class="text-justify" style="text-indent: 2em">
           <v-icon>mdi-alert-circle-outline</v-icon>
@@ -58,11 +52,11 @@
         <p class="text-justify" style="text-indent: 2em">
           <v-icon>mdi-alert-circle-outline</v-icon>
           Nota<sup>3</sup>: <strong>O formulário irá validar as suas respostas a cada
-          seção</strong>. Certifique-se de preencher de maneira mais coerente possível,
-          isso ajudará no processo de análise dos resultados"
+          seção</strong>. Certifique-se de preencher de maneira mais coerente possível.
+          Isso ajudará no processo de análise dos resultados.
         </p>
         <p class="text-right font-weight-bold blue-grey--text">
-          Tempo estimado: 10min.
+          Tempo estimado: 25min.
         </p>
       </v-card-text>
     </v-card>

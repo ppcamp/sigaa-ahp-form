@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav style="width: 500px">
     <!-- Default navigation bar (used in large desktops) -->
     <!-- <v-app-bar app color="indigo lighten-1" dark hide-on-scroll class>
       <div class="d-flex align-center">
@@ -39,7 +39,6 @@
       class="pr-4"
       app
       hide-on-scroll
-      min-width="8.5em"
     >
       <!-- collapse-on-scroll="true" -->
       <v-btn text block @click="drawer = !drawer">
@@ -47,45 +46,72 @@
       </v-btn>
     </v-app-bar>
 
-    <!-- Menu hided -->
-    <v-navigation-drawer app v-model="drawer" temporary class="px-3">
-      <v-container fluid>
-        <div style="height: 10em"></div>
+      <!-- Menu hided -->
+      <v-navigation-drawer
+        app
+        v-model="drawer"
+        temporary
+        class="px-3"
+        width="30%"
 
-        <v-row class="my-1 py-1" align="center" justify="space-around">
-          <v-btn text block small title="Informações" href="#info">
-            <v-icon class="mr-2">mdi-information-outline</v-icon>Informações
-          </v-btn>
-        </v-row>
+      >
 
-        <v-row class="my-1 py-1" align="center" justify="space-around">
-          <v-btn text block small title="Informações" href="#general">
-            <v-icon class="mr-2">mdi-school</v-icon>Visão geral
-          </v-btn>
-        </v-row>
+        <!-- Items -->
+        <v-list
+          nav
+          dense
+          style="margin:auto"
+        >
+          <div style="height:8em"></div>
+          <v-list-item title="Informações" href="#info">
+            <v-list-item-icon>
+              <v-icon>mdi-information-outline</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>
+              Informações
+            </v-list-item-title>
+          </v-list-item>
 
-        <v-row class="my-1 py-1" align="center" justify="space-around">
-          <v-btn text block small title="Informações" href="#contec">
-            <v-icon class="mr-2">mdi-notebook-edit-outline</v-icon>Conhecimento
-            técnico
-          </v-btn>
-        </v-row>
+          <!-- Seções -->
+          <v-list-group
+            :value="group"
+            prepend-icon="mdi-menu-down"
+          >
+            <template v-slot:activator>
+              <v-list-item-title>Seções</v-list-item-title>
+            </template>
+            <!-- Iterate over section -->
+            <v-list-item
+              v-for="([name, link, icon], i) in sections"
+              :key="i"
+              link
+              :title="name"
+              :href="link"
+              class="ml-5"
+            >
+              <v-list-item-icon>
+                <v-icon>
+                  {{icon}}
+                </v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>
+                {{name}}
+              </v-list-item-title>
+            </v-list-item>
+          </v-list-group>
 
-        <v-row class="my-1 py-1" align="center" justify="space-around">
-          <v-btn href="#habinterpessoal" small text disabled>
-            <v-icon class="mr-2">mdi-account-group</v-icon>
-            <span class="mr-1">Habilidades interpessoais</span>
-          </v-btn>
-        </v-row>
+          <!-- Confirmation -->
+          <v-list-item title="Confirmação" href="#confirmation">
+            <v-list-item-icon>
+              <v-icon>mdi-check-all</v-icon>
+            </v-list-item-icon>
 
-        <v-row class="my-1 py-1" align="center" justify="space-around">
-          <v-btn href="#habintrapessoal" small text disabled>
-            <v-icon class="mr-2">mdi-account</v-icon>
-            <span class="mr-1">Habilidades intrapessoais</span>
-          </v-btn>
-        </v-row>
-      </v-container>
-    </v-navigation-drawer>
+            <v-list-item-title >
+              Confirmar e enviar
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
   </nav>
 </template>
 
@@ -93,6 +119,16 @@
 export default {
   data() {
     return {
+      sections: [
+        ["Visão geral", "#sec1", "mdi-share"],
+        ["Conhecimento técnico", "#sec2", "mdi-share"],
+        ["Conhecimento, métodos e ferramentas fundamentais de computação básica", "#sec3", "mdi-share"],
+        ["Conhecimento, métodos e ferramentas na área de sistemas de software", "#sec4", "mdi-share"],
+        ["Conhecimentos básicos em sistemas de comunicação", "#sec5", "mdi-share"],
+        ["Competências, habilidades e atributos pessoais e profissionais", "#sec6", "mdi-share"],
+        ["Competências e habilidades interpessoais: trabalho em equipe e comunicação", "#sec7", "mdi-share"],
+      ],
+      group: false,
       drawer: false,
     };
   },
