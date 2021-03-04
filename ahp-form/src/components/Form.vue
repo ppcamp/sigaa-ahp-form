@@ -792,7 +792,7 @@ export default {
         // n!/( p!(n-p)! ) Where p = 2
         questions: [
           "Gerenciar projetos e sistemas de computação",
-          "Engenharia-econômica",
+          "Realizar estudos de viabilidade técnico-econômica",
           "Compreender e resolver problemas",
           "Autoaprendizado",
           "Criatividade e Inovação",
