@@ -691,7 +691,7 @@ export default {
         // n!/( p!(n-p)! ) Where p = 2
         questions: [
           "Conhecimento técnico",
-          "Competências, habilidades e atributos pessoais e profissionais",
+          "Competências, habilidades e atributos pessoais e profissionais: gerenciar projetos, compreender problemas e autoaprendizado",
           "Competências e habilidades interpessoais: trabalho em equipe e comunicação",
         ],
         // AHP
