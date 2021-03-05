@@ -48,26 +48,9 @@
       </div>
 
       <!-- UI: inconsistent responses -->
-      <v-row justify="center">
-        <v-alert
-          prominent
-          type="error"
-          :value="!lRoot.valid"
-          border="top"
-          transition="scale-transition"
-        >
-          <v-row align="center">
-            <v-col class="grow">
-              Existe um pouco de inconsistência nas respostas apresentadas nesta seção.
-              Gostaria de retificar alguma resposta? 😞
-            </v-col>
-            <!-- <v-col class="shrink">
-              <v-btn @click="reset">Resetar</v-btn>
-            </v-col> -->
-          </v-row>
-        </v-alert>
-      </v-row>
+      <UiError :show="!lRoot.valid" />
     </v-container>
+
 
     <!-- 1. Conhecimento técnico -->
     <v-container class="py-5 my-5 px-5">
@@ -118,25 +101,7 @@
       </div>
 
       <!-- UI: inconsistent responses -->
-      <v-row justify="center">
-        <v-alert
-          prominent
-          type="error"
-          :value="!l1Q1.valid"
-          border="top"
-          transition="scale-transition"
-        >
-          <v-row align="center">
-            <v-col class="grow">
-              Existe um pouco de inconsistência nas respostas apresentadas nesta seção.
-              Gostaria de retificar alguma resposta? 😞
-            </v-col>
-            <!-- <v-col class="shrink">
-              <v-btn @click="reset">Resetar</v-btn>
-            </v-col> -->
-          </v-row>
-        </v-alert>
-      </v-row>
+      <UiError :show="!l1Q1.valid" />
     </v-container>
 
     <!-- 1.2. Conhecimento, métodos e ferramentas fundamentais de computação básica -->
@@ -188,25 +153,7 @@
       </div>
 
       <!-- UI: inconsistent responses -->
-      <v-row justify="center">
-        <v-alert
-          prominent
-          type="error"
-          :value="!l2Q1S2.valid"
-          border="top"
-          transition="scale-transition"
-        >
-          <v-row align="center">
-            <v-col class="grow">
-              Existe um pouco de inconsistência nas respostas apresentadas nesta seção.
-              Gostaria de retificar alguma resposta? 😞
-            </v-col>
-            <!-- <v-col class="shrink">
-              <v-btn @click="reset">Resetar</v-btn>
-            </v-col> -->
-          </v-row>
-        </v-alert>
-      </v-row>
+      <UiError :show="!l2Q1S2.valid" />
     </v-container>
 
     <!-- 1.3. Conhecimento, métodos e ferramentas na área de sistemas de software -->
@@ -258,25 +205,8 @@
       </div>
 
       <!-- UI: inconsistent responses -->
-      <v-row justify="center">
-        <v-alert
-          prominent
-          type="error"
-          :value="!l2Q1S3.valid"
-          border="top"
-          transition="scale-transition"
-        >
-          <v-row align="center">
-            <v-col class="grow">
-              Existe um pouco de inconsistência nas respostas apresentadas nesta seção.
-              Gostaria de retificar alguma resposta? 😞
-            </v-col>
-            <!-- <v-col class="shrink">
-              <v-btn @click="reset">Resetar</v-btn>
-            </v-col> -->
-          </v-row>
-        </v-alert>
-      </v-row>
+      <UiError :show="!l2Q1S3.valid" />
+
     </v-container>
 
     <!-- 1.5. Conhecimentos básicos em sistemas de comunicação -->
@@ -329,25 +259,8 @@
       </div>
 
       <!-- UI: inconsistent responses -->
-      <v-row justify="center">
-        <v-alert
-          prominent
-          type="error"
-          :value="!l2Q1S5.valid"
-          border="top"
-          transition="scale-transition"
-        >
-          <v-row align="center">
-            <v-col class="grow">
-              Existe um pouco de inconsistência nas respostas apresentadas nesta seção.
-              Gostaria de retificar alguma resposta? 😞
-            </v-col>
-            <!-- <v-col class="shrink">
-              <v-btn @click="reset">Resetar</v-btn>
-            </v-col> -->
-          </v-row>
-        </v-alert>
-      </v-row>
+      <UiError :show="!l2Q1S5.valid" />
+
     </v-container>
 
     <!-- 2. Competências, habilidades e atributos pessoais e profissionais -->
@@ -399,25 +312,7 @@
       </div>
 
       <!-- UI: inconsistent responses -->
-      <v-row justify="center">
-        <v-alert
-          prominent
-          type="error"
-          :value="!l1Q2.valid"
-          border="top"
-          transition="scale-transition"
-        >
-          <v-row align="center">
-            <v-col class="grow">
-              Existe um pouco de inconsistência nas respostas apresentadas nesta seção.
-              Gostaria de retificar alguma resposta? 😞
-            </v-col>
-            <!-- <v-col class="shrink">
-              <v-btn @click="reset">Resetar</v-btn>
-            </v-col> -->
-          </v-row>
-        </v-alert>
-      </v-row>
+      <UiError :show="!l1Q2.valid" />
     </v-container>
 
     <!-- 3. Competências e habilidades interpessoais: trabalho em equipe e comunicação -->
@@ -470,28 +365,11 @@
       </div>
 
       <!-- UI: inconsistent responses -->
-      <v-row justify="center">
-        <v-alert
-          prominent
-          type="error"
-          :value="!l1Q3.valid"
-          border="top"
-          transition="scale-transition"
-        >
-          <v-row align="center">
-            <v-col class="grow">
-              Existe um pouco de inconsistência nas respostas apresentadas nesta seção.
-              Gostaria de retificar alguma resposta? 😞.
-            </v-col>
-            <!-- <v-col class="shrink">
-              <v-btn @click="reset">Resetar</v-btn>
-            </v-col> -->
-          </v-row>
-        </v-alert>
-      </v-row>
+      <UiError :show="!l1Q3.valid" />
     </v-container>
 
     <!---------------------- End of Questions ----------------------->
+
     <!-- Confirmation and send -->
     <v-container>
       <v-divider dark></v-divider>
@@ -618,72 +496,35 @@
       </v-row>
     </v-container>
 
-    <!-- UI: Loading (Sending informations) -->
-    <v-dialog v-model="loading" persistent width="35em">
-      <v-card class="pa-5 text-center">
-        <v-progress-circular
-          :size="50"
-          color="primary"
-          class="mr-5"
-          indeterminate
-        ></v-progress-circular>
-        <span class="overline"
-          >Enviando as informações para os pesquisadores</span
-        >
-      </v-card>
-    </v-dialog>
+    <!-- UI: Loading when sending the data -->
+    <UiLoading :loading="loading" />
 
     <!-- UI: Error when send -->
-    <v-dialog v-model="errorOnSend" persistent width="35em">
-      <v-card class="pa-5 text-center">
-        <h3 class="pa-2">
-          <v-btn class="px-0" text color="error" @click="reset"> Fechar </v-btn>
-          <br />
-          <br />
-          <v-icon size="2em" class="pr-5" color="red">
-            mdi-alert-decagram
-          </v-icon>
-          Houve um erro ao enviar as informações
-          <br />
-          <br />
-          <p align="justify" class="caption text--darken-2 grey--text">
-            * Por favor entre em contato com os pesquisadores para avisá-los
-            sobre este problema.
-            <strong>
-              <span class="error--text">
-                Erro: {{ this.errorOnSendCode }}
-              </span>
-            </strong>
-          </p>
-        </h3>
-      </v-card>
-    </v-dialog>
+    <UiErrorOnSend
+      :show="errorOnSend"
+      :reset="reset"
+      :reason="errorOnSendCode"
+    />
 
     <!-- UI: Confirmation when send -->
-    <div class="text-center">
-      <v-bottom-sheet v-model="sent" persistent>
-        <v-sheet class="text-center" height="10em">
-          <v-btn class="ma-4" text color="error" @click="reset"> Fechar </v-btn>
-          <h3 class="pa-2">
-            <v-icon size="2em" class="pr-5" color="green">
-              mdi-email-check-outline
-            </v-icon>
-            Informações enviadas com sucesso para os pesquisadores!
-            <br/>
-            <span class="text-overline">
-              *Obrigado pela sua participação* <span style="font-size:1.3em">😊</span>
-            </span>
-          </h3>
-        </v-sheet>
-      </v-bottom-sheet>
-    </div>
+    <UiConfirmSent
+      :show="sent"
+      :reset="reset"
+    />
   </v-form>
 </template>
 
+
+
 <script>
 import axios from "axios";
+import UiError from '@/components/ui/FormError';
+import UiLoading from '@/components/ui/Loading';
+import UiErrorOnSend from '@/components/ui/ErrorOnSend';
+import UiConfirmSent from '@/components/ui/ConfirmWhenSend';
 
 export default {
+  name:'Form',
   data() {
     return {
       // 0. Upper (Root)
@@ -857,11 +698,17 @@ export default {
       validForm: true,
 
       // UI interations (allerts)
-      loading: false, // Sending info to email
-      errorOnSend: false, // Ocurred a problem when sending info to email
-      errorOnSendCode: null, // code that will get the status of requisition
-      sent: false, // Email sent
+      loading: false,         // Sending info to email
+      errorOnSend: false,     // Ocurred a problem when sending info to email
+      errorOnSendCode: null,  // code that will get the status of requisition
+      sent: false,            // Email sent
     };
+  },
+  components: {
+    UiError,
+    UiLoading,
+    UiErrorOnSend,
+    UiConfirmSent
   },
 
   // Executes before render the page

@@ -7,6 +7,7 @@
 
     <!-- Add a navbar to iterate over "Form" -->
     <Navbar />
+
     <!-- Add quiz -->
     <Form />
   </v-app>
