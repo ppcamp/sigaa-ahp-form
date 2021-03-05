@@ -35,10 +35,10 @@
     <v-app-bar
       color="indigo lighten-1"
       dark
-      collapse
+      :collapse="$vuetify.breakpoint.mobile ? false : true"
       class="pr-4"
       app
-      hide-on-scroll
+      :hide-on-scroll="$vuetify.breakpoint.mobile ? false : true"
     >
       <!-- collapse-on-scroll="true" -->
       <v-btn text block @click="drawer = !drawer">
@@ -52,17 +52,19 @@
         v-model="drawer"
         temporary
         class="px-3"
-        width="30%"
-
+        height="100%"
+        :width="$vuetify.breakpoint.mobile ? '100%' : '30%'"
       >
 
-        <!-- Items -->
+        <!-- Menu items -->
         <v-list
           nav
           dense
           style="margin:auto"
         >
-          <div style="height:8em"></div>
+          <div :style="!$vuetify.breakpoint.mobile ? 'height:8em' : 'height:2em'"></div>
+
+
           <v-list-item title="Informações" href="#info">
             <v-list-item-icon>
               <v-icon>mdi-information-outline</v-icon>
@@ -111,6 +113,21 @@
             </v-list-item-title>
           </v-list-item>
         </v-list>
+
+        <!-- UI: Exit button when in mobile -->
+        <div style="bottom:0; position:fixed; left:50%; transform: translate(-50%, -50%);">
+          <v-btn
+            v-if="$vuetify.breakpoint.mobile"
+            elevation="0"
+            align="center"
+            class="red ma-5 white--text"
+            v-on:click="drawer=false"
+            title="Fechar o menu"
+          >
+            <v-icon size="24px" alt="Fechar o menu"> mdi-close </v-icon>
+            <span>Fechar o menu</span>
+          </v-btn>
+        </div>
       </v-navigation-drawer>
   </nav>
 </template>

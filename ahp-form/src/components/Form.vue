@@ -4,7 +4,7 @@
     <v-container class="py-5 my-5 px-5">
       <v-divider></v-divider>
       <!-- Title -->
-      <p class="text-center display-2 my-5 pb-4" id="sec1">Visão geral</p>
+      <p class="text-center display-1 my-5 pb-4" id="sec1">Visão geral</p>
 
       <!-- Questions -->
       <div v-for="(a, iA) in lRoot.questions" :key="a">
@@ -72,7 +72,7 @@
     <!-- 1. Conhecimento técnico -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-2 my-5 pb-4" id="sec2">
+      <p class="text-center display-1 my-5 pb-4" id="sec2">
         Conhecimento técnico
       </p>
 
@@ -353,7 +353,7 @@
     <!-- 2. Competências, habilidades e atributos pessoais e profissionais -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-3 my-3 pb-4" id="sec6">
+      <p class="text-center display-1 my-3 pb-4" id="sec6">
         Competências, habilidades e atributos pessoais e profissionais
       </p>
 
@@ -423,7 +423,7 @@
     <!-- 3. Competências e habilidades interpessoais: trabalho em equipe e comunicação -->
     <v-container class="py-5 my-5 px-5">
       <!-- Title -->
-      <p class="text-center display-2 my-3 pb-4" id="sec7">
+      <p class="text-center display-1 my-3 pb-4" id="sec7">
         Competências e habilidades interpessoais: trabalho em equipe e
         comunicação
       </p>
