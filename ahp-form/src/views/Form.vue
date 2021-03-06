@@ -426,7 +426,7 @@ export default {
         matrixQ1S3: String(
           this.l2Q1S3.matrix.map((curr) => "[" + curr.join() + "],").join("")
         ),
-        Q1S5: String(this.l2Q1S5.formMatrix[0][1]),
+        Q1S5: String(this.l2Q1S5.matrix[0][1]),
         matrixQ2: String(
           this.l1Q2.matrix.map((curr) => "[" + curr.join() + "],").join("")
         ),
