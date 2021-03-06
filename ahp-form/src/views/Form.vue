@@ -214,8 +214,8 @@
 
 <script>
 // Components
-import Navbar from "@/components/Navbar";
-import Info from "@/components/Info";
+import Navbar from "@/components/form/Navbar";
+import Info from "@/components/form/Info";
 import FormQuestion from '@/components/form/Questions';
 import UiLoading from '@/components/ui/Loading';
 import UiErrorOnSend from '@/components/ui/ErrorOnSend';
