@@ -333,7 +333,6 @@ export default {
     },
 
     /**
-     * TODO: Check if ahp's values are right
      * Get values from form matrix and insert it onto ahp matrix
      * @param {Number} row The row number
      * @param {Number} col The col number
@@ -346,17 +345,19 @@ export default {
 
       // Get slider's index from form matrix
       const slider_index = obj.formMatrix[row][col];
+      // console.log("🚀 -> onSliderChange -> slider_index [0..9]: ", slider_index);
+
+      // Get equivalent value to ahp
+      const slider_value = this.ahp.values[slider_index];
+      // console.log("🚀 -> onSliderChange -> slider_value", slider_value);
 
       // Put into ahp matrix
-      obj.matrix[row][col] = this.ahp.values[slider_index];
-      obj.matrix[col][row] = round(this.ahp.values[slider_index] ** -1);
-
-      // console.log("🚀 -> onSliderChange -> slider_index [0..9]: ", slider_index);
+      obj.matrix[row][col] = slider_value;
+      obj.matrix[col][row] = round(slider_value ** -1);
       // console.log("🚀 -> onSliderChange -> Matrix", obj.matrix);
       // console.log("🚀 -> onSliderChange -> Form", obj.formMatrix);
 
-      // Check ahp
-      obj.valid = true;
+
       const [result, ahp_index] = checkAhp(obj.matrix);
       // console.log("🚀 -> onSliderChange -> result", result);
       // console.log("🚀 -> onSliderChange -> ahp_index", ahp_index);
@@ -365,6 +366,9 @@ export default {
       if (!result) {
         obj.ci = round(ahp_index);
         obj.valid = false;
+      } else {
+        obj.ci = 0;
+        obj.valid = true;
       }
     },
 
@@ -422,7 +426,7 @@ export default {
         matrixQ1S3: String(
           this.l2Q1S3.matrix.map((curr) => "[" + curr.join() + "],").join("")
         ),
-        Q1S5: String(this.l2Q1S5.formMatrix[0][0]),
+        Q1S5: String(this.l2Q1S5.formMatrix[0][1]),
         matrixQ2: String(
           this.l1Q2.matrix.map((curr) => "[" + curr.join() + "],").join("")
         ),

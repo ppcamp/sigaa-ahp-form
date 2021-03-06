@@ -62,7 +62,7 @@ function checkAhp(obj, matrix = null) {
   const len = obj.length;
 
   // If exist only 2 questions, ahp is not needed
-  if (len <= 2) return true;
+  if (len <= 2) return [true, 0];
 
   // If we don't pass matrix object, we'll ...
   // ... copy the matrix, doing so, we don't change the current value of matrix stored in "obj"
