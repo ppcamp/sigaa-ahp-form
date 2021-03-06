@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // Routes
-import Home from '@/views/Home.vue'
-import NotFoundComponent from '@/views/NotFound'
+import Form from '@/views/Form.vue'
+import NotFound from '@/views/NotFound'
 
 Vue.use(VueRouter)
 
@@ -10,11 +10,16 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    redirect: '/Form'
+  },
+  {
+    path: '/Form',
+    name: 'Form',
+    component: Form,
   },
   {
     path: '/*',
-    component: NotFoundComponent
+    component: NotFound
   }
 ]
 

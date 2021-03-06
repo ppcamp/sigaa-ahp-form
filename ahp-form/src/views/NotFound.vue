@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name:'NotFound',
   created() {
     // Delete Navbar and Footer
   },

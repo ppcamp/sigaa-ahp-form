@@ -5,13 +5,13 @@
     <!-- Title -->
     <p
       class="text-center display-1 my-5 pb-4"
-      :id="id"
+      :id="linkId"
     >
       {{ title }}
     </p>
 
     <!-- Questions -->
-    <div :v-for="(a, iA) in obj.questions" :key="a">
+    <div v-for="(a, iA) in obj.questions" :key="a">
       <v-row
         v-for="(b, iB) in obj.questions.slice(iA)"
         :key="b"
@@ -47,7 +47,6 @@
           >
           </v-slider>
 
-          <v-divider></v-divider>
         </v-card-text>
       </v-row>
     </div>
@@ -68,7 +67,7 @@ export default {
     UiError
   },
 
-  props: ['id','title','obj','ahp']
+  props: ['linkId','title','obj','ahp', 'insertIntoMatrix']
 
   // {
   //   id: { type: String },
