@@ -1,62 +1,47 @@
 <template>
   <v-container justify-center fill-height fluid>
     <v-card flat max-width="70em" class="ma-5 pa-5">
-      <v-card-title id="info">Motivo do questionário</v-card-title>
+      <v-card-title id="info">Instruções</v-card-title>
       <v-card-text>
-        <p class="text-justify" style="text-indent: 2em">
-          O objetivo deste questionário é realizar uma pesquisa com
-          profissionais da área da informática, sendo esses, responsáveis por
-          realizar a contratação da equipe de TI. Adicionalmente, este questionário
-          também será utilizado para realizar a pesquisa com docentes da área.
-        </p>
-      </v-card-text>
 
-      <v-card-title>Como funciona o questionário?</v-card-title>
-      <v-card-text>
-        <p class="text-justify" style="text-indent: 2em">
-          O questionário utiliza o AHP -- <i>Analythic Hierarchy Process</i>,
-          sendo esta, uma técnica desenvolvida por Saaty(1980) para tomada de
-          decisões. A técnica pode ser utilizada para
-          <b>validar as informações</b> obtidas no questionário, i.e, se as respostas
-          selecionadas estão coerentes ou não.
-          Caso esteja muito incoerente, será requisitado um novo preenchimento para a seção.
+        <p class="text-justify">
+          O objetivo deste questionário é priorizar a importância de cada
+          competência esperada para um profissional formado no curso de
+          Engenharia de Computação da Unifei – Itabira.
         </p>
-        <p class="text-justify" style="text-indent: 2em">
-          Ao concluir, será pedido um email para contato e, por fim, as
-          informações serão enviadas para o email dos pesquisadores.
-        </p></v-card-text
-      >
 
-      <v-card-title> O que se espera ao final do questionário? </v-card-title>
-      <v-card-text>
-        <p class="text-justify" style="text-indent: 2em">
-          Ao final do questionário, será possível entender melhor o que os
-          professores e o mercado esperam do aluno egresso, de maneira que seja
-          possível o uso da ferramenta para mensurar, de maneira
-          quantitativa, as diretivas propostas para o curso.
+        <p class="text-justify">
+          O formulário realiza sempre comparação entre duas competências.
+          Considere que a escala é baseada no "grau de importância" onde
+          0 significa que as competências comparadas possuem a mesma
+          importância.
         </p>
-      </v-card-text>
 
-      <v-card-title> Notas: </v-card-title>
-      <v-card-text>
-        <p class="text-justify" style="text-indent: 2em">
-          <v-icon>mdi-alert-circle-outline</v-icon> Nota: Os dados informados
-          aqui serão enviados aos responsáveis pela pesquisa, toda e qualquer
-          informação será sigilosa.
+        <p class="text-justify">
+          O questionário utiliza o Analythic Hierarchy Process para checar a
+          índice consistência (IC)
+          das repostas dos fornecidas.
+          O questionário irá informar o valor do IC, sendo desejável um
+          IC <span v-html="'<'"/> 0,1 para cada seção.
+          Caso o seja IC <span v-html="'>'"/> 0,1 você poderá revisar suas respostas (se desejar),
+          ou prosseguir respondendo o formulário e enviá-lo.
         </p>
-        <p class="text-justify" style="text-indent: 2em">
-          <v-icon>mdi-alert-circle-outline</v-icon>
-          Nota<sup>2</sup>: Para o preenchimento do formulário, considere que a
-          escala é com base no "<strong>grau de importância</strong>".
+
+        <p class="text-justify">
+          Ao concluir, será solicitado seu nome e e-mail para contato
+          apenas para controle das respostas enviadas.
+          Todos as repostas e informações são sigilosas (
+            apenas o pesquisador responsável terá acesso aos dados)
+            e seguem as Resoluções 466/12 e 510/16 do CNS que
+            versam sobre a ética em pesquisa.
         </p>
-        <p class="text-justify" style="text-indent: 2em">
-          <v-icon>mdi-alert-circle-outline</v-icon>
-          Nota<sup>3</sup>: <strong>O formulário irá validar as suas respostas a cada
-          seção</strong>. Certifique-se de preencher de maneira mais coerente possível.
-          Isso ajudará no processo de análise dos resultados.
+
+        <p class="text-justify">
+          Desde já agradecemos sua participação nesta pesquisa.
         </p>
-        <p class="text-right font-weight-bold blue-grey--text">
-          Tempo estimado: 25min.
+
+        <p class="text-right font-weight-bold primary--text text--darken-2">
+          Tempo estimado: 10min.
         </p>
       </v-card-text>
     </v-card>
@@ -68,3 +53,9 @@ export default {
   name:'Info'
 };
 </script>
+
+<style scoped>
+  p {
+    text-indent: 2em
+  }
+</style>
