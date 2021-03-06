@@ -1,5 +1,5 @@
 <template>
-  <v-container class="py-5 my-5 px-5">
+  <v-container class="pa-5 my-5">
     <v-divider></v-divider>
 
     <!-- Title -->
@@ -43,7 +43,7 @@
             color="indigo lighten-1"
             track-color="indigo lighten-1"
             v-model="obj.formMatrix[iA][iB + iA]"
-            @change="insertIntoMatrix(iA, iB + iA, obj)"
+            @change="onSliderChange(iA, iB + iA, obj)"
           >
           </v-slider>
 
@@ -52,42 +52,28 @@
     </div>
 
     <!-- UI: inconsistent responses -->
-    <UiError :show="!obj.valid" />
+    <UiSectionError :show="!obj.valid" :ciIndex="obj.ci"/>
   </v-container>
 </template>
 
 <script>
-import UiError from '@/components/ui/FormError';
-
+import UiSectionError from '@/components/form/ui/SectionError';
+import { AhpData, FormSectionData } from "@/libraries/types";
 
 export default {
   name: 'FormQuestion',
 
   components: {
-    UiError
+    UiSectionError
   },
 
-  props: ['linkId','title','obj','ahp', 'insertIntoMatrix']
-
-  // {
-  //   id: { type: String },
-  //   title: { type: String },
-  //   matrix: {
-  //     type: {
-  //       question: { type: [String] },
-  //       matrix: { type: Array },
-  //       formMatrix: { type: Array },
-  //       notes: { type: null },
-  //       valid: { type: Boolean },
-  //     },
-  //   },
-  //   ahp: {
-  //     type: {
-  //       values: { type: Float64Array },
-
-  //     }
-  //   }
-  // }
+  props: {
+    linkId: { type: String },
+    title: { type: String },
+    obj: { type: FormSectionData },
+    ahp: { type: AhpData },
+    onSliderChange: { type: Function },
+  }
 }
 </script>
 

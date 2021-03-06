@@ -8,61 +8,67 @@
 
     <!-- Add quiz -->
     <v-form v-model="validForm" ref="form">
-      <!-- 0. Root  -->
+      <!-- lRoot: Visão geral  -->
       <FormQuestion
         linkId="sec1"
         title="Visão Geral"
         :obj="lRoot"
         :ahp="ahp"
-        :insertIntoMatrix="insertIntoMatrix"
+        :onSliderChange="onSliderChange"
       />
 
+      <!-- l1Q1: Conhecimento técnico  -->
       <FormQuestion
         linkId="sec2"
         title="Conhecimento técnico"
         :obj="l1Q1"
         :ahp="ahp"
-        :insertIntoMatrix="insertIntoMatrix"
+        :onSliderChange="onSliderChange"
       />
 
+      <!-- l2Q1S2: Conhecimento, métodos e ferramentas fundamentais de computação básica  -->
       <FormQuestion
         linkId="sec3"
         title="Conhecimento, métodos e ferramentas fundamentais de computação básica"
         :obj="l2Q1S2"
         :ahp="ahp"
-        :insertIntoMatrix="insertIntoMatrix"
+        :onSliderChange="onSliderChange"
       />
 
+      <!-- l2Q1S3: Conhecimento, métodos e ferramentas na área de sistemas de software  -->
       <FormQuestion
         linkId="sec4"
         title="Conhecimento, métodos e ferramentas na área de sistemas de software"
         :obj="l2Q1S3"
         :ahp="ahp"
-        :insertIntoMatrix="insertIntoMatrix"
+        :onSliderChange="onSliderChange"
       />
 
+      <!-- l2Q1S5: Conhecimentos básicos em sistemas de comunicação  -->
       <FormQuestion
         linkId="sec5"
         title="Conhecimentos básicos em sistemas de comunicação"
         :obj="l2Q1S5"
         :ahp="ahp"
-        :insertIntoMatrix="insertIntoMatrix"
+        :onSliderChange="onSliderChange"
       />
 
+      <!-- l1Q2: Competências, habilidades e atributos pessoais e profissionais  -->
       <FormQuestion
         linkId="sec6"
         title="Competências, habilidades e atributos pessoais e profissionais"
         :obj="l1Q2"
         :ahp="ahp"
-        :insertIntoMatrix="insertIntoMatrix"
+        :onSliderChange="onSliderChange"
       />
 
+      <!-- l1Q3: Competências e habilidades interpessoais: trabalho em equipe e comunicação  -->
       <FormQuestion
         linkId="sec7"
         title="Competências e habilidades interpessoais: trabalho em equipe e comunicação"
         :obj="l1Q3"
         :ahp="ahp"
-        :insertIntoMatrix="insertIntoMatrix"
+        :onSliderChange="onSliderChange"
       />
 
       <!---------------------- End of Questions ----------------------->
@@ -99,91 +105,8 @@
           </v-col>
         </v-row>
 
-        <!-- UI: Agreement (modal) -->
-        <v-row justify="center">
-          <v-checkbox v-model="acceptTerms" color="green" value="acceptTerms">
-            <template v-slot:label>
-              <div>
-                Ao clicar, você concorda com os
-                <v-dialog width="600px">
-                  <template v-slot:activator="{ on, attrs }">
-                    <span
-                      title="Clique para visualizar os termos"
-                      class="primary--text"
-                      v-bind="attrs"
-                      v-on="on"
-                    >
-                      termos
-                    </span>
-                  </template>
-                  <v-card>
-                    <v-card-title>
-                      <span class="headline"> Termos para concessão de dados </span>
-                    </v-card-title>
-                    <v-card-text>
-                      <p class="text-justify" style="text-indent: 2em">
-                        Ao clicar nesta caixa de seleção
-                        <b>você estará concordando em enviar suas informações</b>
-                        para os pesquisadores. Essa informação irá conter os dados
-                        preenchidos nas perguntas e no formulário de
-                        identificação.
-                      </p>
-                      <p class="text-justify" style="text-indent: 2em">
-                        O conteúdo deste formulário, caso seja disponibilizado
-                        para o público, não irá conter os detalhes pessoais do
-                        entrevistado (nome e email).
-                      </p>
-                      <p class="text-justify" style="text-indent: 2em">
-                        Por razões éticas, as respostas serão tratadas de forma agregada e confidencial,
-                        preservando assim a privacidade de todos os respondentes. O site onde a pesquisa está
-                        é perfeitamente seguro e utilizado tanto no meio acadêmico como por empresas.
-                        As informações coletadas serão utilizadas unicamente para fins acadêmicos
-                      </p>
-                      <!--
-                      <p class="text-justify" style="text-indent: 2em">
-                        Salienta-se que a pesquisa foi aprovada pelo Comitê de Ética em Pesquisa
-                        <span class="red--text"> XXX </span>,
-                          sob protocolo <span class="red--text">YYY</span>.
-                      </p>
-                      -->
-                      <p class="text-justify" style="text-indent: 2em">
-                        Quanto aos possíveis riscos ou danos à sua participação, esses são considerados mínimos e
-                        relacionados ao preenchimento de questionários, tais como: tomar o tempo do respondente,
-                        provocar cansaço, gerar desconforto, causar sentimento de insegurança quanto à opção de
-                        resposta que melhor reflete sua opinião diante das afirmativas relacionadas ao produto.
-                        Sendo assim, <strong>você poderá desistir do preenchimento do questionário a qualquer momento,
-                        sem penalidade alguma. </strong>
-                      </p>
-                      <p class="text-justify" style="text-indent: 2em">
-                        Durante todo o período da pesquisa, você terá a possibilidade de esclarecer qualquer dúvida
-                        ou solicitar assistência. Para isso, basta entrar em contato com os pesquisadores.
-
-                        <strong>A sua participação é livre e voluntária. Não haverá nenhuma forma de compensação financeira e,
-                        também, não haverá custos para o (a) participante </strong>.
-                      </p>
-                      <p class="text-justify" style="text-indent: 2em">
-                        A sua identidade permanecerá em sigilo
-                        durante toda pesquisa e, especialmente, na publicação dos resultados. Além disso, destaca-se
-                        que não será identificada a organização em que o participante atua e que as informações
-                        coletadas serão utilizadas unicamente para fins acadêmicos.
-
-                        Como já citado, toda a informação possuirá identificadores aleatórios, de modo que, <strong>em
-                        caso de extravio de informações, não será possível, a priori, identificar a sua origem.</strong>
-
-
-                      </p>
-                      <p class="text-justify font-weight-bold text--darken-2 primary--text" style="text-indent: 2em;">
-                        Caso tenha alguma dúvida sobre o questionário, envie-nos um e-mail para: rodrigobraga@unifei.edu.br
-                        Sua participação é muito importante para nós!
-                      </p>
-                    </v-card-text>
-                  </v-card>
-                </v-dialog>
-                de partipação nessa pesquisa. Seus dados pessoais não serão divuldados e estão protegidos.
-              </div>
-            </template>
-          </v-checkbox>
-        </v-row>
+        <!-- Checkbox and modal -->
+        <FormTerms :swap="onClickTermCheckBox" :accept="acceptTerms"/>
 
         <!-- Send btn -->
         <v-row justify="center" class="mb-5 pb-5">
@@ -217,14 +140,16 @@
 import Navbar from "@/components/form/Navbar";
 import Info from "@/components/form/Info";
 import FormQuestion from '@/components/form/Questions';
-import UiLoading from '@/components/ui/Loading';
-import UiErrorOnSend from '@/components/ui/ErrorOnSend';
-import UiConfirmSent from '@/components/ui/ConfirmWhenSend';
+import UiLoading from '@/components/form/ui/Loading';
+import UiErrorOnSend from '@/components/form/ui/ErrorOnSend';
+import UiConfirmSent from '@/components/form/ui/ConfirmWhenSend';
+import FormTerms from '@/components/form/Terms';
+
 // Libraries
 import axios from "axios";
 import { checkAhp } from "@/libraries/ahp";
 import { round } from "@/libraries/common";
-import { FormSectionData } from "../libraries/types";
+import { AhpData, FormSectionData } from "../libraries/types";
 
 
 export default {
@@ -246,15 +171,7 @@ export default {
       l1Q3: null,
 
       // Sliders
-      ahp: {
-        // Values that will be inserted into matrix
-        values: [0.11, 0.14, 0.2, 0.33, 1, 3, 5, 7, 9],
-        // Questions labels
-        ticks: ["9", "7", "5", "3", "Igual", "3", "5", "7", "9"],
-        // Range (iterate over values and ticks)
-        min: 0,
-        max: 8,
-      },
+      ahp: new AhpData(),
 
       // Send form
       rules: {
@@ -287,6 +204,7 @@ export default {
   components: {
     Navbar,
     Info,
+    FormTerms,
     UiLoading,
     UiErrorOnSend,
     UiConfirmSent,
@@ -298,28 +216,24 @@ export default {
    * @description Create a new object for each section
    */
   created() {
-    // This variable will store the value of position in form
-    const pos = 4;
+    // This constant will store the value of position in form
+    const SLIDER_START_POS = 4;
+    // This constant will store the ahp default value
+    const AHP_START_VALUE = 1;
 
-
-    // 0. Upper (Root)
+    // Visão geral
     this.lRoot = new FormSectionData({
       questions: [
         "Conhecimento técnico",
         "Competências, habilidades e atributos pessoais e profissionais: gerenciar projetos, compreender problemas e autoaprendizado",
         "Competências e habilidades interpessoais: trabalho em equipe e comunicação",
       ],
-      matrix: Array(3)
-                .fill()
-                .map(() => Array(3).fill(1)),
-      formMatrix: Array(3)
-                    .fill()
-                    .map(() => Array(3).fill(pos)),
-      notes: null,
+      matrix: FormSectionData.newMatrix(3, AHP_START_VALUE),
+      formMatrix: FormSectionData.newMatrix(3, SLIDER_START_POS),
+      notes: [""],
       valid: true,
     });
-
-    // 1. Level 1 (Conhecimento téc ...)
+    // Conhecimento técnico
     this.l1Q1 = new FormSectionData({
       // n!/( p!(n-p)! ) Where p = 2
       questions: [
@@ -330,17 +244,12 @@ export default {
         "Conhecimentos básicos em sistemas de comunicação",
         "Conhecimentos básicos em sistemas de automação",
       ],
-      matrix: Array(6)
-                .fill()
-                .map(() => Array(6).fill(1)),
-      formMatrix: Array(6)
-                    .fill()
-                    .map(() => Array(6).fill(pos)),
-      notes: null,
+      matrix: FormSectionData.newMatrix(6, AHP_START_VALUE),
+      formMatrix: FormSectionData.newMatrix(6, SLIDER_START_POS),
+      notes: [""],
       valid: true,
     });
-
-    // 1.2 Level 2 (Conhecimento, métodos ...)
+    // Conhecimento, métodos e ferramentas fundamentais de computação básica
     this.l2Q1S2 = new FormSectionData({
       // n!/( p!(n-p)! ) Where p = 2
       questions: [
@@ -348,16 +257,12 @@ export default {
         "Linguagens e paradigmas de programação específicos",
         "Projeto e análise de algoritmos",
       ],
-      matrix: Array(3)
-                .fill()
-                .map(() => Array(3).fill(1)),
-      formMatrix: Array(3)
-                    .fill()
-                    .map(() => Array(3).fill(pos)),
-      notes: null,
+      matrix: FormSectionData.newMatrix(3, AHP_START_VALUE),
+      formMatrix: FormSectionData.newMatrix(3, SLIDER_START_POS),
+      notes: [""],
       valid: true,
     });
-
+    // Conhecimento, métodos e ferramentas na área de sistemas de software
     this.l2Q1S3 = new FormSectionData({
       // n!/( p!(n-p)! ) Where p = 2
       questions: [
@@ -368,34 +273,24 @@ export default {
         "Inteligência artificial",
         "Desenvolvimento Web e Mobile",
       ],
-      matrix: Array(6)
-                .fill()
-                .map(() => Array(6).fill(1)),
-      formMatrix: Array(6)
-                    .fill()
-                    .map(() => Array(6).fill(pos)),
-      notes: null,
+      matrix: FormSectionData.newMatrix(6, AHP_START_VALUE),
+      formMatrix: FormSectionData.newMatrix(6, SLIDER_START_POS),
+      notes: [""],
       valid: true,
     });
-
-    // Due the fact that this only has one question, we'll not validate-it
-    // TODO: Fix problem with number of elements in this section
+    // Conhecimentos básicos em sistemas de comunicação
     this.l2Q1S5 = new FormSectionData({
       // n!/( p!(n-p)! ) Where p = 2
       questions: [
         "Redes de computadores",
         "Software para sistemas de comunicação",
       ],
-      matrix: Array(2)
-                .fill()
-                .map(() => Array(2).fill(1)),
-      formMatrix: Array(2)
-                    .fill()
-                    .map(() => Array(2).fill(pos)),
-      notes: null,
+      matrix: FormSectionData.newMatrix(2, AHP_START_VALUE),
+      formMatrix: FormSectionData.newMatrix(2, SLIDER_START_POS),
+      notes: [""],
       valid: true,
     });
-
+    // Competências, habilidades e atributos pessoais e profissionais
     this.l1Q2 = new FormSectionData({
       // n!/( p!(n-p)! ) Where p = 2
       questions: [
@@ -405,16 +300,12 @@ export default {
         "Autoaprendizado",
         "Criatividade e Inovação",
       ],
-      matrix: Array(5)
-                .fill()
-                .map(() => Array(5).fill(1)),
-      formMatrix: Array(5)
-                    .fill()
-                    .map(() => Array(5).fill(pos)),
-      notes: null,
+      matrix: FormSectionData.newMatrix(5, AHP_START_VALUE),
+      formMatrix: FormSectionData.newMatrix(5, SLIDER_START_POS),
+      notes: [""],
       valid: true,
     });
-
+    // Competências e habilidades interpessoais: trabalho em equipe e comunicação
     this.l1Q3 = new FormSectionData({
       // n!/( p!(n-p)! ) Where p = 2
       questions: [
@@ -423,45 +314,58 @@ export default {
         "Empreender e exercer liderança",
         "Trabalho em equipe",
       ],
-      matrix: Array(4)
-                .fill()
-                .map(() => Array(4).fill(1)),
-      formMatrix: Array(4)
-                    .fill()
-                    .map(() => Array(4).fill(pos)),
-      notes: null,
+      matrix: FormSectionData.newMatrix(4, AHP_START_VALUE),
+      formMatrix: FormSectionData.newMatrix(4, SLIDER_START_POS),
+      notes: [""],
       valid: true,
     });
 
-    // console.log("created -> this.lRoot.matrix", this.lRoot.matrix);
-    // console.log("created -> this.lRoot.formMatrix", this.lRoot.formMatrix);
+    // console.log("🚀 -> created -> All objects where created");
   },
 
   // Functions
   methods: {
     /**
+     * Swap acceptTerms variable. Needed for FormTerms component.
+     */
+    onClickTermCheckBox() {
+      this.acceptTerms = !this.acceptTerms;
+    },
+
+    /**
      * TODO: Check if ahp's values are right
      * Get values from form matrix and insert it onto ahp matrix
-     * @param row The row number
-     * @param col The col number
-     * @param obj The dictionary object that holds "formMatrix"
+     * @param {Number} row The row number
+     * @param {Number} col The col number
+     * @param {FormSectionData} obj The dictionary object that holds "formMatrix"
      *              (form values) and matrix (ahp values)
      */
-    insertIntoMatrix(row, col, obj) {
-      // Get value from form matrix
-      const value = obj.formMatrix[row][col];
-      // Put into ahp matrix
-      obj.matrix[row][col] = this.ahp.values[value];
-      obj.matrix[col][row] = round(this.ahp.values[value] ** -1);
+    onSliderChange(row, col, obj) {
+      // console.log("🚀 -> onSliderChange -> col", col);
+      // console.log("🚀 -> onSliderChange -> row", row);
 
-      // console.log("insertIntoMatrix -> value", value);
-      // console.log("insertIntoMatrix -> Matrix", this.lRoot.matrix);
-      // console.log("insertIntoMatrix -> Form", this.lRoot.formMatrix);
+      // Get slider's index from form matrix
+      const slider_index = obj.formMatrix[row][col];
+
+      // Put into ahp matrix
+      obj.matrix[row][col] = this.ahp.values[slider_index];
+      obj.matrix[col][row] = round(this.ahp.values[slider_index] ** -1);
+
+      // console.log("🚀 -> onSliderChange -> slider_index [0..9]: ", slider_index);
+      // console.log("🚀 -> onSliderChange -> Matrix", obj.matrix);
+      // console.log("🚀 -> onSliderChange -> Form", obj.formMatrix);
 
       // Check ahp
       obj.valid = true;
-      const result = checkAhp(obj.matrix);
-      if (!result) obj.valid = false;
+      const [result, ahp_index] = checkAhp(obj.matrix);
+      // console.log("🚀 -> onSliderChange -> result", result);
+      // console.log("🚀 -> onSliderChange -> ahp_index", ahp_index);
+
+      // Update object
+      if (!result) {
+        obj.ci = round(ahp_index);
+        obj.valid = false;
+      }
     },
 
     /**
