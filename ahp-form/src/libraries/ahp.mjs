@@ -1,4 +1,5 @@
-import { round } from "./common";
+import { round } from "./common.mjs";
+import { test } from "./common.mjs";
 
 /**
  * Inconsistency index (Random Index, RI) mapping.
@@ -199,6 +200,7 @@ function checkAhp(obj, matrix = null) {
    */
   const CR = CI / RI[len - 1];
   // console.log("🚀 -> checkAhp -> CI", CI);
+  // test.printMatrix(matrix, "Matriz feita no formulário");
 
   // Where 0.1 it's given by Saaty also
   // console.log("🚀 -> checkAhp -> CR", CR);

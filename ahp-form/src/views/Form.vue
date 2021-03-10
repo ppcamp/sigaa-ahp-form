@@ -148,7 +148,7 @@ import FormTerms from '@/components/form/Terms';
 // Libraries
 import axios from "axios";
 import { checkAhp } from "@/libraries/ahp";
-import { round } from "@/libraries/common";
+import { redoAHP, round } from "@/libraries/common";
 import { AhpData, FormSectionData } from "../libraries/types";
 
 
@@ -321,6 +321,7 @@ export default {
     });
 
     // console.log("🚀 -> created -> All objects where created");
+    // console.log("🚀 -> created -> Setting up tests");
   },
 
   // Functions
@@ -392,23 +393,26 @@ export default {
       // Doesn't need to check the ahp anymore, because
       //  we're check'in in each section
 
+      // NOTE: Uma vez que eu estou aceitando arquivos com CI errado,
+      // ... é necessário enviar o arquivo original para que o AHP possa ser calculado na api
+
       // Now, we execute the ahp for each matrix again, because we
       // didn't changed the ahp matrix by default, so now, assuming that
       // everything is ok, we do.
-      checkAhp(this.lRoot.matrix, this.lRoot.matrix);
-      // console.log("submit -> this.lRoot.matrix", this.lRoot.matrix);
-      checkAhp(this.l1Q1.matrix, this.l1Q1.matrix);
-      // console.log("submit -> this.l1Q1.matrix", this.l1Q1.matrix);
-      checkAhp(this.l2Q1S2.matrix, this.l2Q1S2.matrix);
-      // console.log("submit -> this.l2Q1S2.matrix", this.l2Q1S2.matrix);
-      checkAhp(this.l2Q1S3.matrix, this.l2Q1S3.matrix);
-      // console.log("submit -> this.l2Q1S3.matrix", this.l2Q1S3.matrix);
-       // We do not validate it
-      // checkAhp(this.l2Q1S5, this.l2Q1S5.matrix);
-      checkAhp(this.l1Q2.matrix, this.l1Q2.matrix);
-      // console.log("submit -> this.l1Q2.matrix", this.l1Q2.matrix);
-      checkAhp(this.l1Q3.matrix, this.l1Q3.matrix);
-      // console.log("submit -> this.l1Q3.matrix", this.l1Q3.matrix);
+      // checkAhp(this.lRoot.matrix, this.lRoot.matrix);
+      // // console.log("submit -> this.lRoot.matrix", this.lRoot.matrix);
+      // checkAhp(this.l1Q1.matrix, this.l1Q1.matrix);
+      // // console.log("submit -> this.l1Q1.matrix", this.l1Q1.matrix);
+      // checkAhp(this.l2Q1S2.matrix, this.l2Q1S2.matrix);
+      // // console.log("submit -> this.l2Q1S2.matrix", this.l2Q1S2.matrix);
+      // checkAhp(this.l2Q1S3.matrix, this.l2Q1S3.matrix);
+      // // console.log("submit -> this.l2Q1S3.matrix", this.l2Q1S3.matrix);
+      //  // We do not validate it
+      // // checkAhp(this.l2Q1S5, this.l2Q1S5.matrix);
+      // checkAhp(this.l1Q2.matrix, this.l1Q2.matrix);
+      // // console.log("submit -> this.l1Q2.matrix", this.l1Q2.matrix);
+      // checkAhp(this.l1Q3.matrix, this.l1Q3.matrix);
+      // // console.log("submit -> this.l1Q3.matrix", this.l1Q3.matrix);
 
       // Send email
       const data = {
