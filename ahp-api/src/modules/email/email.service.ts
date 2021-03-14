@@ -12,6 +12,7 @@ import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import * as path from 'path';
 import * as Handlebars from 'handlebars';
 import * as fs from 'fs';
+import { promisify } from 'util';
 
 @Injectable()
 export class EmailService {
@@ -58,9 +59,9 @@ export class EmailService {
 
     // Assign email options
     this.defaultOpts = {
-      from: 'Sigaa Form <sigaaForm@noreplay.com>', // sender address
+      from: 'Formulário SIGAA <sigaaForm@noreplay.com>', // sender address
       to: 'p.augustocampos@gmail.com',
-      subject: '[Formulário Sigaa] Compentências',
+      subject: 'Competências: ',
       html: null,
     };
 
@@ -98,6 +99,22 @@ export class EmailService {
     return pageToSend;
   }
 
+  emailPromise(ip: string, email: {}) {
+    this.logger.info(`${this.name} SendMail -> Req Ip ${ip} - Sending emails`);
+
+    return new Promise((resolve, reject) => {
+      this.transporter.sendMail(email, error => {
+        if (error) {
+          reject(
+            `${this.name} SendMail -> Req Ip ${ip} - Email not sent (error ${error})`,
+          );
+        } else {
+          resolve(`${this.name} SendMail -> Req Ip ${ip} - Email sent`);
+        }
+      });
+    });
+  }
+
   /**
    * Send mail to researches
    * @param {SendEmailDTO} data The data got it from form page
@@ -114,30 +131,47 @@ export class EmailService {
 
     // Create a default object and pass values to it
     const email = { ...this.defaultOpts };
+    // update subject
+    email['subject'] += data.name;
+
+    // insert others infos
     email['html'] = template({
       name: data.name,
       email: data.email,
       date: `${Date().toString()}`,
-      rootMatrix: data.rootMatrix.replace(/]./g, ']|').split('|'),
-      matrixQ1: data.matrixQ1.replace(/]./g, ']|').split('|'),
-      matrixQ1S2: data.matrixQ1S2.replace(/]./g, ']|').split('|'),
-      matrixQ1S3: data.matrixQ1S3.replace(/]./g, ']|').split('|'),
+      rootMatrix: data.rootMatrix
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      matrixQ1: data.matrixQ1
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      matrixQ1S2: data.matrixQ1S2
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      matrixQ1S3: data.matrixQ1S3
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
       Q1S5: data.Q1S5,
-      matrixQ2: data.matrixQ2.replace(/]./g, ']|').split('|'),
-      matrixQ3: data.matrixQ3.replace(/]./g, ']|').split('|'),
+      matrixQ2: data.matrixQ2
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      matrixQ3: data.matrixQ3
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
     });
 
-    this.logger.info(`${this.name} SendMail -> Req Ip ${ip} - Sending emails`);
-    this.transporter.sendMail(email, error => {
-      if (error) {
-        this.logger.error(
-          `${this.name} SendMail -> Req Ip ${ip} - Email not sent (error ${error})`,
-        );
-        throw new ServiceUnavailableException(
-          `Some error ocurred with nodemailer: ${error}. Please, sent a message to researches`,
-        );
-      } else
-        this.logger.info(`${this.name} SendMail -> Req Ip ${ip} - Email sent`);
-    });
+    // create a promise like
+    await this.emailPromise(ip, email)
+      .then(this.logger.info)
+      .catch((err: string) => {
+        this.logger.error(err);
+        throw new ServiceUnavailableException(err);
+      });
   }
 }

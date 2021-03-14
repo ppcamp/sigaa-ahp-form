@@ -15,50 +15,62 @@
   <h5>Data: {{date}}</h5>
   <hr />
   <div>
-    <h3>0. Root Matrix</h3>
+    <h3><i>lRoot</i>: Visão Geral</h3>
+    [<br />
     {{#each rootMatrix}}
-    {{this}}<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;{{this}},<br />
     {{/each}}
+    ]
   </div>
   <br />
   <div>
-    <h3>1. Matrix (for iterations of level 1)</h3>
+    <h3><i>l1Q1</i>: Conhecimento técnico</h3>
+    [<br />
     {{#each matrixQ1}}
-    {{this}}<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;{{this}},<br />
     {{/each}}
+    ]
   </div>
   <br />
   <div>
-    <h3>1.2 Matrix (for iterations of level 2, question 1.2)</h3>
+    <h3><i>l2Q1S2</i>: Conhecimento, métodos e ferramentas fundamentais de computação básica</h3>
+    [<br />
     {{#each matrixQ1S2}}
-    {{this}}<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;{{this}},<br />
     {{/each}}
+    ]
   </div>
   <br />
   <div>
-    <h3>1.3 Matrix (for iterations of level 2, question 1.3)</h3>
+    <h3><i>l2Q1S3</i>: Conhecimento, métodos e ferramentas na área de sistemas de software</h3>
+    [<br />
     {{#each matrixQ1S3}}
-    {{this}}<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;{{this}},<br />
     {{/each}}
+    ]
   </div>
   <br />
   <div>
-    <h3>1.5 String response (for iterations of level 2, question 1.5)</h3>
+    <h3><i>l2Q1S5</i>: Conhecimentos básicos em sistemas de comunicação</h3>
     {{Q1S5}}
   </div>
   <br />
   <div>
-    <h3>2 Matrix (for iterations of level 1, question 2)</h3>
+    <h3><i>l1Q2</i>: Competências, habilidades e atributos pessoais e profissionais</h3>
+    [<br />
     {{#each matrixQ2}}
-    {{this}}<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;{{this}},<br />
     {{/each}}
+    ]
   </div>
   <br />
   <div>
-    <h3>3 Matrix (for iterations of level 1, question 3)</h3>
+    <h3><i>l1Q3</i>: Competências e habilidades interpessoais (trabalho em equipe e comunicação)</h3>
+    [<br />
     {{#each matrixQ3}}
-    {{this}}<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;{{this}},<br />
     {{/each}}
+    ]
   </div>
 </body>
 
