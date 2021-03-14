@@ -12,7 +12,7 @@ import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import * as path from 'path';
 import * as Handlebars from 'handlebars';
 import * as fs from 'fs';
-import { promisify } from 'util';
+import { json } from 'express';
 
 @Injectable()
 export class EmailService {
@@ -122,6 +122,8 @@ export class EmailService {
    * @throws 503 If message couldn't be sent
    */
   async sendMail(ip: string, data: SendEmailDTO): Promise<void> {
+    const date = `${new Date()}`;
+
     // Create a handlebars to this section
     var source = fs.readFileSync(
       path.join(this.hbsViews, 'form.handlebars'),
@@ -135,10 +137,10 @@ export class EmailService {
     email['subject'] += data.name;
 
     // insert others infos
-    email['html'] = template({
+    const data2send = {
       name: data.name,
       email: data.email,
-      date: `${Date().toString()}`,
+      date: date,
       rootMatrix: data.rootMatrix
         .replace(/]./g, ']|')
         .split('|')
@@ -164,13 +166,41 @@ export class EmailService {
         .replace(/]./g, ']|')
         .split('|')
         .slice(0, -1),
-    });
+    };
+
+    email['html'] = template(data2send);
 
     // create a promise like
     await this.emailPromise(ip, email)
       .then(this.logger.info)
       .catch((err: string) => {
         this.logger.error(err);
+        // ** also, create a local file with this response **
+
+        // get current path
+        const localPath = path.join(process.cwd(), '..');
+        // filename
+        let fileName = path.join(localPath, data.name + '.json');
+        if (fs.existsSync(fileName)) {
+          fileName = fileName.slice(0, -5) + '_.json';
+        }
+        // write output to a specific file
+        fs.writeFile(
+          fileName,
+          JSON.stringify(data2send),
+          { encoding: 'utf8' },
+          err => {
+            if (err) {
+              return this.logger.error(
+                'The function failed to send email and failed to save the data.',
+              );
+            } else {
+              this.logger.debug(
+                `Function failed to send email. However you can see a copy at: ${fileName}`,
+              );
+            }
+          },
+        );
         throw new ServiceUnavailableException(err);
       });
   }
