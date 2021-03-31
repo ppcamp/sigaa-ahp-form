@@ -45,14 +45,6 @@
                   As informações coletadas serão utilizadas unicamente para fins acadêmicos
                 </p>
 
-                <!--
-                <p class="text-justify">
-                  Salienta-se que a pesquisa foi aprovada pelo Comitê de Ética em Pesquisa
-                  <span class="red--text"> XXX </span>,
-                    sob protocolo <span class="red--text">YYY</span>.
-                </p>
-                -->
-
                 <p class="text-justify">
                   Quanto aos possíveis riscos ou danos à sua participação, esses são considerados mínimos e
                   relacionados ao preenchimento de questionários, tais como: tomar o tempo do respondente,

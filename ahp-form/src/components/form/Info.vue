@@ -40,6 +40,12 @@
           Desde já agradecemos sua participação nesta pesquisa.
         </p>
 
+        <h3> Dados do projeto: </h3>
+        <p class="text-justify">
+          <strong>CAAE:</strong> <i>44596621.7.0000.5110</i>.
+          <strong>Número do Parecer:</strong> <i>4.607.584</i>.
+        </p>
+
         <p class="text-right font-weight-bold primary--text text--darken-2">
           Tempo estimado: 10min.
         </p>
