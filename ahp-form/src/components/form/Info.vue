@@ -42,8 +42,8 @@
 
         <h3> Dados do projeto: </h3>
         <p class="text-justify">
-          <strong>CAAE:</strong> <i>44596621.7.0000.5110</i>.
-          <strong>Número do Parecer:</strong> <i>4.607.584</i>.
+          <strong>CAAE:</strong> <i>{{VUE_APP_COMITTEE_NUMBER}}</i>.
+          <strong>Número do Parecer:</strong> <i>{{VUE_APP_COMITTEE_CAAE}}</i>.
         </p>
 
         <p class="text-right font-weight-bold primary--text text--darken-2">
@@ -56,7 +56,19 @@
 
 <script>
 export default {
-  name:'Info'
+  name:'Info',
+
+  data() {
+    return {
+      VUE_APP_COMITTEE_NUMBER: 0,
+      VUE_APP_COMITTEE_CAAE: 0
+    }
+  },
+  created() {
+    // bind data from .env file
+    this.VUE_APP_COMITTEE_NUMBER = process.env.VUE_APP_COMITTEE_NUMBER;
+    this.VUE_APP_COMITTEE_CAAE = process.env.VUE_APP_COMITTEE_CAAE;
+  }
 };
 </script>
 
