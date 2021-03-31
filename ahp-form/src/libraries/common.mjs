@@ -46,9 +46,9 @@ const test = (function() {
       for (const row of matrix) {
         write += "   [";
         for (const item of row) {
-          write += "\t" + item + "\t";
+          write += "\t" + item + ",\t";
         }
-        write += "]\n";
+        write += "],\n";
       }
       console.log(write);
       console.log("--".repeat(30));
@@ -88,7 +88,7 @@ let redoAHP = (function() {
     // if isn't a leaf
     if (start < nodes.length) {
       for (const value of AHP_VALUES) {
-        console.log("Running tree at: -> ", start - 0);
+        // console.log("Running tree at: -> ", start - 0);
         matrix[row][col] = value;
         matrix[col][row] = round(1 / value);
 
@@ -120,8 +120,8 @@ let redoAHP = (function() {
         if (test.array2Deq(out, match)) {
           // if so, print the matrix that generates this and its CI
           //#region print the matrix that generates this output
-          // test.printMatrix(matrix, `Entrada dos dados`);
-          // test.printMatrix(match, `Matriz esperada (enviada no email)`);
+          test.printMatrix(matrix, `Entrada dos dados`);
+          test.printMatrix(match, `Matriz esperada (enviada no email)`);
           test.printMatrix(
             out,
             `Matriz de saída calculada (CI = ${round(CI, 3)})`
