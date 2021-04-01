@@ -14,6 +14,7 @@
   <h5>Email: {{email}}</h5>
   <h5>Data: {{date}}</h5>
   <hr />
+  {{#if rootMatrix}}
   <div>
     <h3><i>lRoot</i>: Visão Geral</h3>
     [<br />
@@ -23,6 +24,9 @@
     ]
   </div>
   <br />
+  {{/if}}
+
+  {{#if matrixQ1}}
   <div>
     <h3><i>l1Q1</i>: Conhecimento técnico</h3>
     [<br />
@@ -32,6 +36,9 @@
     ]
   </div>
   <br />
+  {{/if}}
+
+  {{#if matrixQ1S2}}
   <div>
     <h3><i>l2Q1S2</i>: Conhecimento, métodos e ferramentas fundamentais de computação básica</h3>
     [<br />
@@ -41,6 +48,9 @@
     ]
   </div>
   <br />
+  {{/if}}
+
+  {{#if matrixQ1S3}}
   <div>
     <h3><i>l2Q1S3</i>: Conhecimento, métodos e ferramentas na área de sistemas de software</h3>
     [<br />
@@ -50,11 +60,17 @@
     ]
   </div>
   <br />
+  {{/if}}
+
+  {{#if l2Q1S5}}
   <div>
     <h3><i>l2Q1S5</i>: Conhecimentos básicos em sistemas de comunicação</h3>
     {{Q1S5}}
   </div>
   <br />
+  {{/if}}
+
+  {{#if matrixQ2}}
   <div>
     <h3><i>l1Q2</i>: Competências, habilidades e atributos pessoais e profissionais</h3>
     [<br />
@@ -64,6 +80,9 @@
     ]
   </div>
   <br />
+  {{/if}}
+
+  {{#if matrixQ3}}
   <div>
     <h3><i>l1Q3</i>: Competências e habilidades interpessoais (trabalho em equipe e comunicação)</h3>
     [<br />
@@ -72,6 +91,7 @@
     {{/each}}
     ]
   </div>
+  {{/if}}
 </body>
 
 </html>

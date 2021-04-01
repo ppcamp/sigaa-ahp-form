@@ -234,36 +234,51 @@ export class EmailService {
     email['subject'] += `${subject} : ${data.name}`;
 
     // insert others infos
-    const data2send = {
+    let data2send = {
       name: data.name,
       email: data.email,
       date: date,
-      rootMatrix: data.rootMatrix
-        .replace(/]./g, ']|')
-        .split('|')
-        .slice(0, -1),
-      matrixQ1: data.matrixQ1
-        .replace(/]./g, ']|')
-        .split('|')
-        .slice(0, -1),
-      matrixQ1S2: data.matrixQ1S2
-        .replace(/]./g, ']|')
-        .split('|')
-        .slice(0, -1),
-      matrixQ1S3: data.matrixQ1S3
-        .replace(/]./g, ']|')
-        .split('|')
-        .slice(0, -1),
-      Q1S5: data.Q1S5,
-      matrixQ2: data.matrixQ2
-        .replace(/]./g, ']|')
-        .split('|')
-        .slice(0, -1),
-      matrixQ3: data.matrixQ3
-        .replace(/]./g, ']|')
-        .split('|')
-        .slice(0, -1),
     };
+
+    if (data.rootMatrix) {
+      data2send['rootMatrix'] = data.rootMatrix
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1);
+    }
+    if (data.matrixQ1) {
+      data2send['matrixQ1'] = data.matrixQ1
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1);
+    }
+    if (data.matrixQ1S2) {
+      data2send['matrixQ1S2'] = data.matrixQ1S2
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1);
+    }
+    if (data.matrixQ1S3) {
+      data2send['matrixQ1S3'] = data.matrixQ1S3
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1);
+    }
+    if (data.Q1S5) {
+      data2send['Q1S5'] = data.Q1S5;
+    }
+    if (data.matrixQ2) {
+      data2send['matrixQ2'] = data.matrixQ2
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1);
+    }
+    if (data.matrixQ3) {
+      data2send['matrixQ3'] = data.matrixQ3
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1);
+    }
 
     email['html'] = template(data2send);
 

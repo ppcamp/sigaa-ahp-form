@@ -1,5 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class SendEmailDTO {
   @ApiProperty({
@@ -16,10 +16,11 @@ export class SendEmailDTO {
   @IsNotEmpty()
   email: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     type: String,
     description: 'Root matrix',
   })
+  @IsOptional()
   @IsNotEmpty()
   rootMatrix: string;
 
@@ -27,6 +28,7 @@ export class SendEmailDTO {
     type: String,
     description: 'Matrix for the iterations in level 1 for Question 1',
   })
+  @IsOptional()
   @IsNotEmpty()
   matrixQ1: string;
 
@@ -34,6 +36,7 @@ export class SendEmailDTO {
     type: String,
     description: 'Matrix for the iterations in level 2 for Question 1.2',
   })
+  @IsOptional()
   @IsNotEmpty()
   matrixQ1S2: string;
 
@@ -41,6 +44,7 @@ export class SendEmailDTO {
     type: String,
     description: 'Matrix for the iterations in level 2 for Question 1.3',
   })
+  @IsOptional()
   @IsNotEmpty()
   matrixQ1S3: string;
 
@@ -48,6 +52,7 @@ export class SendEmailDTO {
     type: String,
     description: 'Question 1.5',
   })
+  @IsOptional()
   @IsNotEmpty()
   Q1S5: string;
 
@@ -55,6 +60,7 @@ export class SendEmailDTO {
     type: String,
     description: 'Matrix for the iterations in level 1 for Question 2',
   })
+  @IsOptional()
   @IsNotEmpty()
   matrixQ2: string;
 
@@ -62,6 +68,7 @@ export class SendEmailDTO {
     type: String,
     description: 'Matrix for the iterations in level 1 for Question 3',
   })
+  @IsOptional()
   @IsNotEmpty()
   matrixQ3: string;
 }
