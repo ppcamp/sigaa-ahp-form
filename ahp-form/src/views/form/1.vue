@@ -62,24 +62,6 @@
         :onSliderChange="onSliderChange"
       />
 
-      <!-- l1Q2: Competências, habilidades e atributos pessoais e profissionais  -->
-      <FormQuestion
-        linkId="sec6"
-        title="Competências, habilidades e atributos pessoais e profissionais"
-        :obj="l1Q2"
-        :ahp="ahp"
-        :onSliderChange="onSliderChange"
-      />
-
-      <!-- l1Q3: Competências e habilidades interpessoais: trabalho em equipe e comunicação  -->
-      <FormQuestion
-        linkId="sec7"
-        title="Competências e habilidades interpessoais: trabalho em equipe e comunicação"
-        :obj="l1Q3"
-        :ahp="ahp"
-        :onSliderChange="onSliderChange"
-      />
-
       <!---------------------- End of Questions ----------------------->
 
       <!-- Confirmation and send -->
