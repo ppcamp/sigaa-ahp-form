@@ -1,31 +1,38 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 // Routes
-import Form from '@/views/Form.vue'
-import NotFound from '@/views/NotFound'
+import Form1 from "@/views/form/1.vue";
+import Form2 from "@/views/form/2.vue";
 
-Vue.use(VueRouter)
+import NotFound from "@/views/NotFound";
+
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    redirect: '/Form'
+    path: "/",
+    name: "Home",
+    redirect: "/Form/Part1"
   },
   {
-    path: '/Form',
-    name: 'Form',
-    component: Form,
+    path: "/Form/Part1",
+    name: "Form_page1",
+    component: Form1
   },
   {
-    path: '/*',
+    path: "/Form/Part2",
+    name: "Form_page2",
+    component: Form2
+  },
+  {
+    path: "/*",
     component: NotFound
   }
-]
+];
 
 const router = new VueRouter({
   routes: routes,
-  mode: 'history',
-})
+  mode: "history"
+});
 
-export default router
+export default router;

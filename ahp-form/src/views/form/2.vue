@@ -1,58 +1,19 @@
+<!-- Formulário: Parte 2
+     Contém as seções:
+        - l1Q2: Competências, habilidades e atributos pessoais e profissionais
+        - l1Q3: Competências e habilidades interpessoais: trabalho em equipe e comunicação
+-->
+
 <template>
   <v-app>
     <!-- Header -->
-    <h1 align="center">Formulário de pesquisa acadêmica</h1>
+    <h1 align="center">Formulário de pesquisa acadêmica: Parte 2</h1>
     <Info />
     <!-- Add a navbar to iterate over "Form" -->
     <Navbar />
 
     <!-- Add quiz -->
     <v-form v-model="validForm" ref="form">
-      <!-- lRoot: Visão geral  -->
-      <FormQuestion
-        linkId="sec1"
-        title="Visão Geral"
-        :obj="lRoot"
-        :ahp="ahp"
-        :onSliderChange="onSliderChange"
-      />
-
-      <!-- l1Q1: Conhecimento técnico  -->
-      <FormQuestion
-        linkId="sec2"
-        title="Conhecimento técnico"
-        :obj="l1Q1"
-        :ahp="ahp"
-        :onSliderChange="onSliderChange"
-      />
-
-      <!-- l2Q1S2: Conhecimento, métodos e ferramentas fundamentais de computação básica  -->
-      <FormQuestion
-        linkId="sec3"
-        title="Conhecimento, métodos e ferramentas fundamentais de computação básica"
-        :obj="l2Q1S2"
-        :ahp="ahp"
-        :onSliderChange="onSliderChange"
-      />
-
-      <!-- l2Q1S3: Conhecimento, métodos e ferramentas na área de sistemas de software  -->
-      <FormQuestion
-        linkId="sec4"
-        title="Conhecimento, métodos e ferramentas na área de sistemas de software"
-        :obj="l2Q1S3"
-        :ahp="ahp"
-        :onSliderChange="onSliderChange"
-      />
-
-      <!-- l2Q1S5: Conhecimentos básicos em sistemas de comunicação  -->
-      <FormQuestion
-        linkId="sec5"
-        title="Conhecimentos básicos em sistemas de comunicação"
-        :obj="l2Q1S5"
-        :ahp="ahp"
-        :onSliderChange="onSliderChange"
-      />
-
       <!-- l1Q2: Competências, habilidades e atributos pessoais e profissionais  -->
       <FormQuestion
         linkId="sec6"
@@ -149,11 +110,11 @@ import FormTerms from '@/components/form/Terms';
 import axios from "axios";
 import { checkAhp } from "@/libraries/ahp";
 import { redoAHP, round } from "@/libraries/common";
-import { AhpData, FormSectionData } from "../libraries/types";
+import { AhpData, FormSectionData } from "@/libraries/types";
 
 
 export default {
-  name:'Form',
+  name:'Form_page2',
 
   // variables
   data() {
@@ -162,11 +123,6 @@ export default {
       // * l_ -> level, where _ is the value
       // * Q_ -> question, where _ is the value
       // * S_ -> sub question, where _ is the value
-      lRoot: null,
-      l1Q1: null,
-      l2Q1S2: null,
-      l2Q1S3: null,
-      l2Q1S5: null,
       l1Q2: null,
       l1Q3: null,
 
@@ -221,75 +177,6 @@ export default {
     // This constant will store the ahp default value
     const AHP_START_VALUE = 1;
 
-    // Visão geral
-    this.lRoot = new FormSectionData({
-      questions: [
-        "Conhecimento técnico",
-        "Competências, habilidades e atributos pessoais e profissionais: gerenciar projetos, compreender problemas e autoaprendizado",
-        "Competências e habilidades interpessoais: trabalho em equipe e comunicação",
-      ],
-      matrix: FormSectionData.newMatrix(3, AHP_START_VALUE),
-      formMatrix: FormSectionData.newMatrix(3, SLIDER_START_POS),
-      notes: [""],
-      valid: true,
-    });
-    // Conhecimento técnico
-    this.l1Q1 = new FormSectionData({
-      // n!/( p!(n-p)! ) Where p = 2
-      questions: [
-        "Matemática e física",
-        "Conhecimento, métodos e ferramentas fundamentais de computação básica",
-        "Conhecimento, métodos e ferramentas na área de sistemas de software",
-        "Conhecimento, métodos e ferramentas na área de sistemas microprocessados",
-        "Conhecimentos básicos em sistemas de comunicação",
-        "Conhecimentos básicos em sistemas de automação",
-      ],
-      matrix: FormSectionData.newMatrix(6, AHP_START_VALUE),
-      formMatrix: FormSectionData.newMatrix(6, SLIDER_START_POS),
-      notes: [""],
-      valid: true,
-    });
-    // Conhecimento, métodos e ferramentas fundamentais de computação básica
-    this.l2Q1S2 = new FormSectionData({
-      // n!/( p!(n-p)! ) Where p = 2
-      questions: [
-        "Lógica, algoritmos, teoria da computação e estrutura de dados",
-        "Linguagens e paradigmas de programação específicos",
-        "Projeto e análise de algoritmos",
-      ],
-      matrix: FormSectionData.newMatrix(3, AHP_START_VALUE),
-      formMatrix: FormSectionData.newMatrix(3, SLIDER_START_POS),
-      notes: [""],
-      valid: true,
-    });
-    // Conhecimento, métodos e ferramentas na área de sistemas de software
-    this.l2Q1S3 = new FormSectionData({
-      // n!/( p!(n-p)! ) Where p = 2
-      questions: [
-        "Configurar plataformas para aplicações de software e serviços",
-        "Arquiteturas de computadores",
-        "Segurança de sistemas de computação",
-        "Engenharia de software e práticas no desenvolvimento de software e versionamento",
-        "Inteligência artificial",
-        "Desenvolvimento Web e Mobile",
-      ],
-      matrix: FormSectionData.newMatrix(6, AHP_START_VALUE),
-      formMatrix: FormSectionData.newMatrix(6, SLIDER_START_POS),
-      notes: [""],
-      valid: true,
-    });
-    // Conhecimentos básicos em sistemas de comunicação
-    this.l2Q1S5 = new FormSectionData({
-      // n!/( p!(n-p)! ) Where p = 2
-      questions: [
-        "Redes de computadores",
-        "Software para sistemas de comunicação",
-      ],
-      matrix: FormSectionData.newMatrix(2, AHP_START_VALUE),
-      formMatrix: FormSectionData.newMatrix(2, SLIDER_START_POS),
-      notes: [""],
-      valid: true,
-    });
     // Competências, habilidades e atributos pessoais e profissionais
     this.l1Q2 = new FormSectionData({
       // n!/( p!(n-p)! ) Where p = 2
@@ -418,19 +305,6 @@ export default {
       const data = {
         name: username,
         email: email,
-        rootMatrix: String(
-          this.lRoot.matrix.map((curr) => "[" + curr.join() + "],").join("")
-        ),
-        matrixQ1: String(
-          this.l1Q1.matrix.map((curr) => "[" + curr.join() + "],").join("")
-        ),
-        matrixQ1S2: String(
-          this.l2Q1S2.matrix.map((curr) => "[" + curr.join() + "],").join("")
-        ),
-        matrixQ1S3: String(
-          this.l2Q1S3.matrix.map((curr) => "[" + curr.join() + "],").join("")
-        ),
-        Q1S5: String(this.l2Q1S5.matrix[0][1]),
         matrixQ2: String(
           this.l1Q2.matrix.map((curr) => "[" + curr.join() + "],").join("")
         ),
@@ -447,7 +321,7 @@ export default {
       // Start UI loading animation
       this.loading = true;
       axios
-        .post(`http://${process.env.VUE_APP_PUBLIC_URL}:3000/email`, data)
+        .post(`http://${process.env.VUE_APP_PUBLIC_URL}:3000/email/Part2`, data)
         .then(
           () => {
             this.loading = false; // close ui anim
