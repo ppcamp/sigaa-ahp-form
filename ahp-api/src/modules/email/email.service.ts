@@ -117,6 +117,7 @@ export class EmailService {
 
   /**
    * Send mail to researches
+   * @param {string} ip User ip
    * @param {SendEmailDTO} data The data got it from form page
    * @return Void
    * @throws 503 If message couldn't be sent
@@ -135,6 +136,102 @@ export class EmailService {
     const email = { ...this.defaultOpts };
     // update subject
     email['subject'] += data.name;
+
+    // insert others infos
+    const data2send = {
+      name: data.name,
+      email: data.email,
+      date: date,
+      rootMatrix: data.rootMatrix
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      matrixQ1: data.matrixQ1
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      matrixQ1S2: data.matrixQ1S2
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      matrixQ1S3: data.matrixQ1S3
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      Q1S5: data.Q1S5,
+      matrixQ2: data.matrixQ2
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+      matrixQ3: data.matrixQ3
+        .replace(/]./g, ']|')
+        .split('|')
+        .slice(0, -1),
+    };
+
+    email['html'] = template(data2send);
+
+    // create a promise like
+    await this.emailPromise(ip, email)
+      .then(this.logger.info)
+      .catch((err: string) => {
+        this.logger.error(err);
+        // ** also, create a local file with this response **
+
+        // get current path
+        const localPath = path.join(process.cwd(), '..');
+        // filename
+        let fileName = path.join(localPath, data.name + '.json');
+        if (fs.existsSync(fileName)) {
+          fileName = fileName.slice(0, -5) + '_.json';
+        }
+        // write output to a specific file
+        fs.writeFile(
+          fileName,
+          JSON.stringify(data2send),
+          { encoding: 'utf8' },
+          err => {
+            if (err) {
+              return this.logger.error(
+                'The function failed to send email and failed to save the data.',
+              );
+            } else {
+              this.logger.debug(
+                `Function failed to send email. However you can see a copy at: ${fileName}`,
+              );
+            }
+          },
+        );
+        throw new ServiceUnavailableException(err);
+      });
+  }
+
+  /**
+   * Send mail to researches
+   * @param {string} ip User ip
+   * @param {SendEmailDTO} data The data got it from form page
+   * @param {string} subject Note to put in subject
+   * @return Void
+   * @throws 503 If message couldn't be sent
+   */
+  async sendMailWithSubject(
+    ip: string,
+    data: SendEmailDTO,
+    subject: string,
+  ): Promise<void> {
+    const date = `${new Date()}`;
+
+    // Create a handlebars to this section
+    var source = fs.readFileSync(
+      path.join(this.hbsViews, 'form.handlebars'),
+      'utf8',
+    );
+    const template = Handlebars.compile(source);
+
+    // Create a default object and pass values to it
+    const email = { ...this.defaultOpts };
+    // update subject
+    email['subject'] += `${subject} : ${data.name}`;
 
     // insert others infos
     const data2send = {

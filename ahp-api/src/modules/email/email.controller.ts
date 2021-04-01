@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  ValidationPipe,
+} from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 import { IpAddress } from '../utils/decorators';
 import { SendEmailDTO } from './dtos/SendEmailDTO';
@@ -16,6 +23,18 @@ export class EmailController {
   @Get()
   async getInfosAboutThisModule(@IpAddress() ip): Promise<string> {
     return this.emailService.getInfos(ip);
+  }
+
+  @ApiOperation({
+    summary: 'Send email with specific description',
+  })
+  @Post(':subject')
+  async postWithSubject(
+    @Param('subject') subject: string,
+    @Body(ValidationPipe) data: SendEmailDTO,
+    @IpAddress() ip,
+  ): Promise<void> {
+    return this.emailService.sendMailWithSubject(ip, data, subject);
   }
 
   @ApiOperation({
