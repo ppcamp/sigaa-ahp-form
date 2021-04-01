@@ -23,6 +23,7 @@ jobs:
     - run: cd ahp-form && cp /home/ubuntu/configEnvs/front/.env .
     - run: cd ahp-form && npm run build
     - run: cd ahp-form && cp -r dist/* /var/www/html/
+    - run: rm -rfd /var/www/html/*
     - run: cd ahp-api ; echo `pwd`; cp /home/ubuntu/configEnvs/back/.env .
     - run: cd ahp-api ; echo `pwd`; npm i; npm run build
     - run: cd ahp-api && pm2 restart ApiBackend
