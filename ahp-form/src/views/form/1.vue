@@ -13,7 +13,7 @@
     <h1 align="center">Formulário de pesquisa acadêmica: Parte 1</h1>
     <Info />
     <!-- Add a navbar to iterate over "Form" -->
-    <Navbar />
+    <Navbar :sections="navbar_sections"/>
 
     <!-- Add quiz -->
     <v-form v-model="validForm" ref="form">
@@ -139,7 +139,7 @@ import FormTerms from '@/components/form/Terms';
 // Libraries
 import axios from "axios";
 import { checkAhp } from "@/libraries/ahp";
-import { redoAHP, round } from "@/libraries/common";
+import { round } from "@/libraries/common";
 import { AhpData, FormSectionData } from "@/libraries/types";
 
 
@@ -149,6 +149,14 @@ export default {
   // variables
   data() {
     return {
+      // store navbar sections
+      navbar_sections: [
+        ["Visão geral", "#sec1", "mdi-share"],
+        ["Conhecimento técnico", "#sec2", "mdi-share"],
+        ["Conhecimento, métodos e ferramentas fundamentais de computação básica", "#sec3", "mdi-share"],
+        ["Conhecimento, métodos e ferramentas na área de sistemas de software", "#sec4", "mdi-share"],
+        ["Conhecimentos básicos em sistemas de comunicação", "#sec5", "mdi-share"],
+      ],
       // The notation follows the logic:
       // * l_ -> level, where _ is the value
       // * Q_ -> question, where _ is the value

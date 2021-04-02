@@ -135,17 +135,21 @@
 <script>
 export default {
   name:'Navbar',
+  props: {
+    sections: { type: [String]}
+  },
+
   data() {
     return {
-      sections: [
-        ["Visão geral", "#sec1", "mdi-share"],
-        ["Conhecimento técnico", "#sec2", "mdi-share"],
-        ["Conhecimento, métodos e ferramentas fundamentais de computação básica", "#sec3", "mdi-share"],
-        ["Conhecimento, métodos e ferramentas na área de sistemas de software", "#sec4", "mdi-share"],
-        ["Conhecimentos básicos em sistemas de comunicação", "#sec5", "mdi-share"],
-        ["Competências, habilidades e atributos pessoais e profissionais", "#sec6", "mdi-share"],
-        ["Competências e habilidades interpessoais: trabalho em equipe e comunicação", "#sec7", "mdi-share"],
-      ],
+      // sections: [
+      //   ["Visão geral", "#sec1", "mdi-share"],
+      //   ["Conhecimento técnico", "#sec2", "mdi-share"],
+      //   ["Conhecimento, métodos e ferramentas fundamentais de computação básica", "#sec3", "mdi-share"],
+      //   ["Conhecimento, métodos e ferramentas na área de sistemas de software", "#sec4", "mdi-share"],
+      //   ["Conhecimentos básicos em sistemas de comunicação", "#sec5", "mdi-share"],
+      //   ["Competências, habilidades e atributos pessoais e profissionais", "#sec6", "mdi-share"],
+      //   ["Competências e habilidades interpessoais: trabalho em equipe e comunicação", "#sec7", "mdi-share"],
+      // ],
       group: false,
       drawer: false,
     };
