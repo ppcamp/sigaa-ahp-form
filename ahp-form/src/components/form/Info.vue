@@ -18,9 +18,9 @@
         </p>
 
         <p class="text-justify">
-          O questionário utiliza o Analythic Hierarchy Process para checar a
-          índice consistência (IC)
-          das repostas dos fornecidas.
+          O questionário utiliza o Analythic Hierarchy Process para checar o
+          índice de consistência (IC)
+          das repostas fornecidas.
           O questionário irá informar o valor do IC, sendo desejável um
           IC <span v-html="'<'"/> 0,1 para cada seção.
           Caso o seja IC <span v-html="'>'"/> 0,1 você poderá revisar suas respostas (se desejar),
