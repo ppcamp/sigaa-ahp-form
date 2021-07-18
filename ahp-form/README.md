@@ -1,6 +1,6 @@
 # ahp-form
 
-The site is running in: https://sigaaanalise.xyz/
+The site is running in: http://sigaaanalise.xyz/
 
 ## Project setup
 
